@@ -14,7 +14,15 @@ describe Mushikago::Tombo::Client do
   it{ should respond_to(:captures) }
   it{ should respond_to(:delete) }
   it{ should respond_to(:info) }
-  
+
+  share_examples_for 'Basic response of request' do
+    it{ should be_a_kind_of(Mushikago::Http::Response) }
+    its(:meta){ should_not be_nil }
+    it 'meta status should 200' do subject.meta['status'].should == 200 end
+    it 'meta message should "OK"' do subject.meta['message'].should == 'OK' end
+    its(:response){ should_not be_nil }
+  end
+
   def create_http_mock(body)
     http = Net::HTTP.new('localhost')
     http.should_receive(:request).and_return do |request|
@@ -39,12 +47,9 @@ describe Mushikago::Tombo::Client do
       @response = @client.capture('http://www.tombo.ne.jp/', :thumbnail=>1)
     end
 
-
     subject{ @response }
 
-    it 'meta status should 200' do subject.meta['status'].should == 200 end
-    it 'meta message should "OK"' do subject.meta['message'].should == 'OK' end
-    its(:response){ should_not be_nil }
+    it_should_behave_like 'Basic response of request'
     its(['id']){ should == 'image_id'}
     its(['image_url']){ should == 'http://img.tombo.ne.jp/sample.jpg' }
     its(['thumbnail_url']){ should == 'http://img.tombo.ne.jp/t/sample.jpg' }
@@ -76,9 +81,8 @@ describe Mushikago::Tombo::Client do
     end
 
     subject{ @response }
-    it{ subject.meta['status'].should == 200 }
-    it{ subject.meta['message'].should == 'OK' }
-    its(:response){ should_not be_nil }
+
+    it_should_behave_like 'Basic response of request'
     its(['total']){ should == 2 }
     its(['images']){ should be_a_kind_of(Enumerable) }
     its(['images']){ should have_exactly(2).items }
@@ -111,7 +115,7 @@ describe Mushikago::Tombo::Client do
 
     subject{ @response }
 
-    it{ subject.meta['status'].should == 200 }
+    it_should_behave_like 'Basic response of request'
     its(['id']){ should == '391d7fe4-e9d4-4975-85a3-e5d38a4cd97f' }
   end
   
@@ -131,7 +135,7 @@ describe Mushikago::Tombo::Client do
 
     subject{ @response }
 
-    it{ subject.meta['status'].should == 200 }
+    it_should_behave_like 'Basic response of request'
     its(['api_count']){ should == 500 }
     its(['disk_usage']){ should == 5500 }
     its(['image_num']){ should == 2 }
