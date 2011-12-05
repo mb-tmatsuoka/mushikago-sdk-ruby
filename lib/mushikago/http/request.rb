@@ -41,7 +41,7 @@ module Mushikago
 
       # @return [String] URLエンコードされ、&で接続されたパラメータの文字列
       def url_encoded_params
-        params.sort.collect{|pp| pp.map{|p| encode p}.join('=')}.join('&')
+        params.sort.select{|p| p.kind_of?(String)}.collect{|pp| pp.map{|p| encode p}.join('=')}.join('&')
       end
 
       # HTTPリクエストオブジェクトに変換する
