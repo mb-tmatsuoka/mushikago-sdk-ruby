@@ -7,7 +7,7 @@ describe Mushikago::Tombo::Request do
 
   subject{ @request }
 
-  its(:host){ should == Mushikago.config.tombo_endpoint }
+  its(:host){ should == Mushikago.config.endpoint }
 
   context 'construct with options' do
     before :all do

@@ -29,7 +29,7 @@ describe Mushikago::Tombo::CaptureRequest do
 
     subject{ @request }
 
-    its(:host){ should == Mushikago.config.tombo_endpoint }
+    its(:host){ should == Mushikago.config.endpoint }
     its(:http_method){ should == 'POST' }
     its(:path){ should == '/1/capture.json' }
     its(:url){ should == 'http://www.mushikago.org/' }

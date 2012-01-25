@@ -7,8 +7,7 @@ module Mushikago
     # @param [Hash] options optionsをロードします
     # @option options [String] :api_key(ENV['MUSHIKAGO_API_KEY']) 発行されたAPIKeyを設定する
     # @option options [String] :secret_key(ENV['MUSHIKAGO_SECRET_KEY']) 発行されたSecretKeyを設定する
-    # @option options [String] :tombo_endpoint('tombo.mushikago.org') tomboサービスのエンドポイントを設定する
-    # @option options [String] :hotaru_endpoint('hotaru.mushikago.org') hotaruサービスのエンドポイントを設定する
+    # @option options [String] :endpoint('api.mushikago.org') 標準のエンドポイントを設定する
     # @example
     #   Mushikago.config.load(:api_key => 'ABCDEFG', :secret_key => 'HIJKLMN')
     def load options={}
@@ -39,8 +38,7 @@ module Mushikago
     
     add_option :api_key, ENV['MUSHIKAGO_API_KEY'] || ENV['MUSHIKAGO_API_KEY_ID']
     add_option :secret_key, ENV['MUSHIKAGO_SECRET_KEY'] || ENV['MUSHIKAGO_SECRET_ACCESS_KEY']
-    add_option :tombo_endpoint, 'tombo.mushikago.org'
-    add_option :hotaru_endpoint, 'hotaru.mushikago.org'
+    add_option :endpoint, 'api.mushikago.org'
 
     # @private
     private

@@ -8,11 +8,11 @@ module Mushikago
       # @option options [String] :endpoint('tombo.mushikago.org') Tomboのエンドポイント
       def initialize options={}
         super()
-        endpoint = options[:endpoint] || Mushikago.config.tombo_endpoint
+        endpoint = options[:endpoint] || Mushikago.config.endpoint
         host, port = endpoint.split(':')
         @host = host
         @port = port if port
-        @path = "/#{api_version}/#{method_name}"
+        @path = "/#{api_version}/tombo/#{method_name}"
       end
 
       # @private

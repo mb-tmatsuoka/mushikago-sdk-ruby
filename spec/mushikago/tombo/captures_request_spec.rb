@@ -27,7 +27,7 @@ describe Mushikago::Tombo::CapturesRequest do
 
     subject{ @request }
 
-    its(:host){ should == Mushikago.config.tombo_endpoint }
+    its(:host){ should == Mushikago.config.endpoint }
     its(:http_method){ should == 'GET' }
     its(:path){ should == '/1/captures.json' }
     its(:id){ should == 'id' }
