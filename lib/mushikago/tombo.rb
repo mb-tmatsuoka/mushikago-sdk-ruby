@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module Mushikago
   # Tomboへのアクセスを行うモジュール
   module Tombo

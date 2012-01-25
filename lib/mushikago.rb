@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Mushikagoサービスを提供するモジュール
 module Mushikago
   # class

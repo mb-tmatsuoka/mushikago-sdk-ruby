@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module Mushikago
   module Tombo
     # キャプチャ一覧取得リクエスト

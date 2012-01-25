@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module Mushikago
   # Mushikagoサービスの認証を扱うモジュール
   module Auth

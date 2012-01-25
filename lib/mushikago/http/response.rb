@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module Mushikago
   module Http
     # Mushikagoサービスのレスポンスを扱うクラス

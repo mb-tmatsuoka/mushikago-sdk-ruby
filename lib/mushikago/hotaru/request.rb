@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module Mushikago
   module Hotaru
     # Hotaruのリクエストを表す抽象クラス

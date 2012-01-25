@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module Mushikago
   # MushikagoサービスへのHTTPリクエストを扱うモジュール
   module Http

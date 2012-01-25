@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module Mushikago
   module Tombo
     # API使用状況取得リクエスト

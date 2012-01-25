@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module Mushikago
   # Hotaruへのアクセスを行うモジュール
   module Hotaru

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module Mushikago
   module Auth
     # MushikagoのリクエストにMix-inして利用する
