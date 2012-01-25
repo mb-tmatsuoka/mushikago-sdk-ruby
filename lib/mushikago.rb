@@ -9,6 +9,7 @@ module Mushikago
   autoload :Auth, 'mushikago/auth'
   autoload :Tombo, 'mushikago/tombo'
   autoload :Hotaru, 'mushikago/hotaru'
+  autoload :Mitsubachi, 'mushikago/mitsubachi'
 
   # @return [Mushikago::Config] config コンフィグのインスタンスへのアクセスを提供する
   def self.config

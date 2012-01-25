@@ -42,7 +42,7 @@ module Mushikago
 
       # @return [String] URLエンコードされ、&で接続されたパラメータの文字列
       def url_encoded_params
-        params.sort.select{|p| p.kind_of?(String)}.collect{|pp| pp.map{|p| encode p}.join('=')}.join('&')
+        params.sort.select{|p| p[1].kind_of?(String)}.collect{|pp| pp.map{|p| encode p}.join('=')}.join('&')
       end
 
       # HTTPリクエストオブジェクトに変換する
@@ -52,7 +52,7 @@ module Mushikago
         headers.each do |key, value|
           http_request[key] = value
         end
-        http_request.body = url_encoded_params if http_request.request_body_permitted?
+        http_request.body = url_encoded_params.tap{|s| puts s} if http_request.request_body_permitted?
         return http_request
       end
 
@@ -94,14 +94,16 @@ module Mushikago
         # @yieldreturn [Object] 変換された値
         # @example
         #   add_param :price do |v| v.to_i end
-        def add_param name, &transform
+        def add_param name, options={}, &transform
           attr_accessor name
           define_method("#{name}=") do |value|
+            value = value || options[:default]
             value = transform ? transform.call(value) : value
             self[name.to_s] = value
             instance_variable_set("@#{name}".to_sym, value)
           end
         end
+        alias request_parameter add_param
       end
     end
   end

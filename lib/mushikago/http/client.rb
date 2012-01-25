@@ -31,7 +31,7 @@ module Mushikago
         Net::HTTP.start(request.host, request.port) do |http|
           http_request = request.to_http_request
           http_response = http.request(http_request)
-          return Mushikago::Http::Response.new(JSON.parse(http_response.body)) 
+          return Mushikago::Http::Response.new(JSON.parse(http_response.body))
         end
       end
     end

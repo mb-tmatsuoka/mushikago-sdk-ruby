@@ -11,10 +11,13 @@ module Mushikago
         headers.each do |key, value|
           http_request[key] = value
         end
-        boundary = 'boundary'
-        http_request.set_content_type 'multipart/form-data', {'boundary' => boundary}
+        boundary = '----------------38117'
+        http_request.set_content_type "multipart/form-data; boundary=#{boundary}"
         http_request.body = multipart_body(boundary)
         http_request.content_length = http_request.body.size
+        puts http_request.content_type
+        puts http_request.body
+        puts http_request.content_length
         return http_request
       end
 
@@ -49,9 +52,11 @@ module Mushikago
             %Q|#{v.read}|
           ].join(EOL)
           content << EOL
-
-          return content
         end
+        content << EOL
+        content << %Q|--#{boundary}--|
+        content << EOL
+        return content
       end
     end
   end
