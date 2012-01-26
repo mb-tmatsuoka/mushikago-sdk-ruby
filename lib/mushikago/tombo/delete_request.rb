@@ -3,7 +3,7 @@ module Mushikago
   module Tombo
     # Deleteリクエスト
     class DeleteRequest < Request
-      def method_name; 'delete.json' end
+      def method_name; 'delete' end
 
       add_param :id
 

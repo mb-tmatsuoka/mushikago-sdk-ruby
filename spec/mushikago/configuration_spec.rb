@@ -27,7 +27,7 @@ describe Mushikago::Config do
     subject{ Mushikago::Config.instance }
     its(:api_key){ should == (ENV['MUSHIKAGO_API_KEY'] || ENV['MUSHIKAGO_API_KEY_ID']) }
     its(:secret_key){ should == (ENV['MUSHIKAGO_SECRET_KEY'] || ENV['MUSHIKAGO_SECRET_ACCESS_KEY']) }
-    its(:endpoint){ should == 'tombo.mushikago.org' }
+    its(:endpoint){ should == 'api.mushikago.org' }
   end
 
   # Mushikago::Configは値をロードすることができる

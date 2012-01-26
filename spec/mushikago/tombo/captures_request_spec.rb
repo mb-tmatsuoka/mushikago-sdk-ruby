@@ -30,7 +30,7 @@ describe Mushikago::Tombo::CapturesRequest do
 
     its(:host){ should == Mushikago.config.endpoint }
     its(:http_method){ should == 'GET' }
-    its(:path){ should == '/1/captures.json' }
+    its(:path){ should == '/1/tombo/captures' }
     its(:id){ should == 'id' }
     its(:limit){ should == '2' }
     its(:offset){ should == '5' }

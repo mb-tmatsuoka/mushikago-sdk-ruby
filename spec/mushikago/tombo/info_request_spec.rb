@@ -10,6 +10,6 @@ describe Mushikago::Tombo::InfoRequest do
 
   its(:host){ should == Mushikago.config.endpoint }
   its(:http_method){ should == 'GET' }
-  its(:path){ should == '/1/info.json' }
+  its(:path){ should == '/1/tombo/info' }
 end
 

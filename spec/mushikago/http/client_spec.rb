@@ -32,8 +32,8 @@ describe Mushikago::Http::Client do
   context 'send test request' do
     before :all do
       request = TestRequest.new
-      request.host = 'tombo.mushikago.org'
-      request.path = '/1/info.json'
+      request.host = 'api.mushikago.org'
+      request.path = '/1/tombo/info'
       client = Mushikago::Http::Client.new
       @response = client.send_request(request)
     end

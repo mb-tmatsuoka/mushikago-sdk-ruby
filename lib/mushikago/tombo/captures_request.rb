@@ -3,7 +3,7 @@ module Mushikago
   module Tombo
     # キャプチャ一覧取得リクエスト
     class CapturesRequest < Request
-      def method_name; 'captures.json' end
+      def method_name; 'captures' end
 
       add_param :id
       add_param :limit

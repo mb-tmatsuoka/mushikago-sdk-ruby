@@ -32,7 +32,7 @@ describe Mushikago::Tombo::CaptureRequest do
 
     its(:host){ should == Mushikago.config.endpoint }
     its(:http_method){ should == 'POST' }
-    its(:path){ should == '/1/capture.json' }
+    its(:path){ should == '/1/tombo/capture' }
     its(:url){ should == 'http://www.mushikago.org/' }
     its(:image_format){ should == 'png' }
     its(:image_quality){ should == '20' }

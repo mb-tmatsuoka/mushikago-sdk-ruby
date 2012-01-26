@@ -16,7 +16,6 @@ module Mushikago
         http_request.set_content_type "multipart/form-data; boundary=#{boundary}"
         http_request.body = multipart_body(boundary)
         http_request.content_length = http_request.body.size
-        puts http_request.body
         return http_request
       end
 

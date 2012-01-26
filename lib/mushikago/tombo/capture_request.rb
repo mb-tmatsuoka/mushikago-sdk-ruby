@@ -3,7 +3,7 @@ module Mushikago
   module Tombo
     # キャプチャリクエスト
     class CaptureRequest < Request
-      def method_name; 'capture.json' end
+      def method_name; 'capture' end
 
       add_param :url
       add_param :image_format
