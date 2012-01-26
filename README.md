@@ -5,14 +5,14 @@ Mushikago SDK for Ruby.
 - **Author**:          Toru Matsuoka
 - **Copyright**:       2011
 - **License**:         Apache License, Version 2.0
-- **Latest Version**:  0.3.0
-- **Release Date**:    September 13th 2011
+- **Latest Version**:  0.3.2
+- **Release Date**:    January 26th 2012
 
 
 概要
 ----
 
-[株式会社マイニングブラウニー](http://www.miningbrownie.co.jp/)が提供する[mushikago Webサービス](http://www.mushikago.org/)を、Rubyから扱うためのライブラリです。
+[株式会社マイニングブラウニー](http://www.miningbrownie.co.jp/)が提供する[mushikago web service](http://www.mushikago.org/)を、Rubyから扱うためのライブラリです。
 
 
 機能一覧
@@ -43,7 +43,6 @@ Mushikago SDK for Rubyはgemを使ってインストールします。
 
 以下のコードで[tombo](http://www.tombo.ne.jp/)を利用することができます。
 
-    require 'rubygems'
     require 'mushikago'
 
     client = Mushikago::Tombo::Client.new(:api_key => '<APIキー>', :secret_key => '<シークレットキー>')
@@ -79,6 +78,38 @@ Mushikago SDK for Rubyはgemを使ってインストールします。
     p ret.response
     # => {"message"=>"OK", "status"=>200} 
     # => {"disk_usage"=>25372565, "image_num"=>133, "api_count"=>499}
+
+### mitsubachiを利用する
+
+以下のコードで[mitsubachi](http://www.mushikago.org/mitsubachi/)を利用することができます。
+スクリプトファイルの記述方法は[ドキュメント](http://www.mushikago.org/mitsubachi/dev/doc/deploy/)を参照して下さい。
+
+    require 'mushikago'
+    
+    client = Mushikago::Mitsubachi::Client.new(:api_key => '<APIキー>', :secret_key => '<シークレットキー>')
+    
+    project_name = 'sample_project'
+    
+    # プロジェクト作成
+    client.project_create(project_name)
+    
+    # スクリプトファイルデプロイ
+    client.script_deploy(project_name, 'sample.rb')
+    
+    # クロール開始
+    client.http_fetch(project_name, 'http://www.mushikago.org/', 'sample.rb')
+    
+    # クロール終了まで待機
+    sleep 1 until client.project_queues(project_name)['count'] == 0
+    
+    # クロールログ確認
+    log_files = client.resource_list(project_name, :filter => 'log/stdout')
+    
+    # ログファイルURL取得
+    log_files['files'].each do |file|
+      ret = client.resource_get(project_name, file['name'])
+      puts ret['url']
+    end
 
 #### APIキーとシークレットキーの設定方法
 
@@ -120,7 +151,7 @@ $ export MUSHIKAGO_SECRET_KEY=&lt;シークレットキー&gt;
 変更履歴
 --------
 
-- **Jan.26.12**: 0.3.0 release
+- **Jan.26.12**: 0.3.2 release
   - mitsubachiに対応
 - **Sep.13.11**: 0.2.3 release
   - captureメソッドのuseragentに対応

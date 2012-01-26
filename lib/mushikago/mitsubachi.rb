@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 module Mushikago
+  # mitsubachiにアクセスするためのモジュール
   module Mitsubachi
     autoload :Client, 'mushikago/mitsubachi/client'
     autoload :Request, 'mushikago/mitsubachi/request'

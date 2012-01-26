@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 module Mushikago
   module Mitsubachi
-    # Mitsubachiサービスを利用する
+    # mitsubachiサービスを利用する
     #
     # @example
+    #   require 'mushikago'
     #   client = Mushikago::Mitsubachi::Client.new(:api_key => '<api_key>', :secret_key => '<secret_key>')
     #
     #   client.project_create('project01')
@@ -14,10 +15,16 @@ module Mushikago
     #   Mushikago.config.load(YAML.load(File.read('config.yml')))
     #   client = Mushikago::Mitsubachi::Client.new
     class Client < Mushikago::Http::Client
-      # TODO project/createの説明
+      # project/createを発行します
       #
       # @param [String] project_name プロジェクト名
       # @param [Hash] options リクエストのオプション
+      # @option options [Boolean] :dedicated
+      # @option options [Integer] :max_lead_time
+      # @option options [Boolean] :stdout
+      # @option options [Boolean] :stderr
+      # @option options [Boolean] :system_log
+      # @option options [String] :log_prefix
       # @example
       #   client.project_create('project01', :stdout => true)
       # @return [Mushikago::Http::Response] リクエストの結果
@@ -26,48 +33,62 @@ module Mushikago
         send_request(request)
       end
 
-      # TODO project/listの説明
+      # project/listを発行します
       #
       # @param [Hash] options リクエストのオプション
       # @option options [Integer] :limit
       # @option options [Integer] :offset
       # @option options [String] :filter
       # @example
-      #   client.project_list
+      #   result = client.project_list
+      #   result['projects'].each do |project|
+      #     puts project['name']
+      #   end
       # @return [Mushikago::Http::Response] リクエストの結果
       def project_list options={}
         request = ProjectListRequest.new(options)
         send_request(request)
       end
 
-      # TODO project/infoの説明
+      # project/infoを発行します
       #
       # @param [String] project_name プロジェクト名
       # @param [Hash] options リクエストのオプション
       # @example
-      #   client.project_info('project01')
+      #   result = client.project_info('project01')
+      #   puts result['dedicated']
+      #   puts result['max_lead_time']
+      #   puts result['stdout']
+      #   puts result['stderr']
+      #   puts result['system_log']
+      #   puts result['log_prefix']
+      #   puts result['count']
+      #   puts result['usage']
+      #   puts result['storage_prefix']
       # @return [Mushikago::Http::Response] リクエストの結果
       def project_info project_name, options={}
         request = ProjectInfoRequest.new(project_name, options)
         send_request(request)
       end
 
-      # TODO project/queuesの説明
+      # project/queuesを発行します
       #
       # @param [String] project_name プロジェクト名
       # @param [Hash] options リクエストのオプション
       # @example
-      #   client.project_queues('project01')
+      #   result = client.project_queues('project01')
+      #   puts result['count']
       # @return [Mushikago::Http::Response] リクエストの結果
       def project_queues project_name, options={}
         request = ProjectQueuesRequest.new(project_name, options)
         send_request(request)
       end
 
-      # TODO project/deleteの説明
+      # project/deleteを発行します
       #
       # @param [String] project_name プロジェクト名
       # @param [Hash] options リクエストのオプション
+      # @option options [Boolean] :forcedelete
       # @example
       #   client.project_delete('project01')
       # @return [Mushikago::Http::Response] リクエストの結果
@@ -76,10 +97,15 @@ module Mushikago
         send_request(request)
       end
 
-      # TODO project/updateの説明
+      # project/updateを発行します
       #
       # @param [String] project_name プロジェクト名
       # @param [Hash] options リクエストのオプション
+      # @option options [Integer] :max_lead_time
+      # @option options [Boolean] :stdout
+      # @option options [Boolean] :stderr
+      # @option options [Boolean] :system_log
+      # @option options [String] :log_prefix
       # @example
       #   client.project_update('project01', :stdout => false)
       # @return [Mushikago::Http::Response] リクエストの結果
@@ -88,7 +114,7 @@ module Mushikago
         send_request(request)
       end
 
-      # TODO project/discontinueの説明
+      # project/discontinueを発行します
       #
       # @param [String] project_name プロジェクト名
       # @param [Hash] options リクエストのオプション
@@ -100,13 +126,13 @@ module Mushikago
         send_request(request)
       end
 
-      # TODO http/fetchの説明
+      # http/fetchを発行します
       #
       # @param [String] project_name プロジェクト名
       # @param [String] url クロール対象のURL
       # @param [String] script_name スクレイピングスクリプトのパス
       # @param [Hash] options リクエストのオプション
-      # @option options [String] :method('GET') HTTPリクエストメソッド
+      # @option options [String] :method
       # @option options [String] :entity_parameter
       # @option options [Boolean] :follow_redirect
       # @option options [String] :parameters
@@ -119,7 +145,7 @@ module Mushikago
         send_request(request)
       end
 
-      # TODO http/pushの説明
+      # http/pushを発行します
       #
       # @param [String] project_name プロジェクト名
       # @param [String] url クロール対象のURL
@@ -139,10 +165,10 @@ module Mushikago
         send_request(request)
       end
 
-      # TODO script/deployの説明
+      # script/deployを発行します
       #
       # @param [String] project_name プロジェクト名
-      # @param [String of File] file_or_file_name デプロイするファイルオブジェクトもしくはファイルパス
+      # @param [String or File] file_or_file_name デプロイするファイルオブジェクトもしくはファイルパス
       # @param [Hash] options リクエストのオプション
       # @option options [String] script_name デプロイ先のファイル名
       # @example
@@ -153,7 +179,7 @@ module Mushikago
         send_request(request)
       end
 
-      # TODO script/listの説明
+      # script/listを発行します
       #
       # @param [String] project_name プロジェクト名
       # @param [Hash] options リクエストのオプション
@@ -161,27 +187,40 @@ module Mushikago
       # @option options [Integer] :offset
       # @option options [String] :filter
       # @example
-      #   client.script_list('project01')
+      #   limit = 10
+      #   offset = 0
+      #   has_more_files = 1
+      #   until has_more_files == 0
+      #     result = client.script_list('project01', :limit => limit, :offset => offset)
+      #     result['scripts'].each do |script|
+      #       puts script['name']
+      #       puts script['size']
+      #       puts script['timestamp']
+      #     end
+      #     offset += limit
+      #     has_more_files = result['has_more_files']
+      #   end
       # @return [Mushikago::Http::Response] リクエストの結果
       def script_list project_name, options={}
         request = ScriptListRequest.new(project_name, options)
         send_request(request)
       end
 
-      # TODO script/getの説明
+      # script/getを発行します
       #
       # @param [String] project_name プロジェクト名
       # @param [String] script_name デプロイ先のファイル名
       # @param [Hash] options リクエストのオプション
       # @example
-      #   client.script_get('project01', 'sample.rb')
+      #   result = client.script_get('project01', 'sample.rb')
+      #   puts result['url']
       # @return [Mushikago::Http::Response] リクエストの結果
       def script_get project_name, script_name, options={}
         request = ScriptGetRequest.new(project_name, script_name, options)
         send_request(request)
       end
 
-      # TODO script/deleteの説明
+      # script/deleteを発行します
       #
       # @param [String] project_name プロジェクト名
       # @param [String] script_name デプロイ先のファイル名
@@ -194,23 +233,23 @@ module Mushikago
         send_request(request)
       end
 
-      # TODO resource/storeの説明
+      # resource/storeを発行します
       #
       # @param [String] project_name プロジェクト名
-      # @param [String of File] file_or_file_name デプロイするファイルオブジェクトもしくはファイルパス
+      # @param [String or File] file_or_file_name デプロイするファイルオブジェクトもしくはファイルパス
       # @param [Hash] options リクエストのオプション
       # @option options [String] :file_name デプロイ先のファイル名
       # @option options [String] :content_type
       # @option options [public] :public
       # @example
-      #   client.resource_store('project01', 'sample.csv',)
+      #   client.resource_store('project01', 'sample.csv', :public => true)
       # @return [Mushikago::Http::Response] リクエストの結果
       def resource_store project_name, file_or_file_name, options={}
         request = ResourceStoreRequest.new(project_name, file_or_file_name, options)
         send_request(request)
       end
 
-      # TODO resource/listの説明
+      # resource/listを発行します
       #
       # @param [String] project_name プロジェクト名
       # @param [Hash] options リクエストのオプション
@@ -218,27 +257,40 @@ module Mushikago
       # @option options [Integer] :offset
       # @option options [String] :filter
       # @example
-      #   client.resource_list('project01')
+      #   limit = 10
+      #   offset = 0
+      #   has_more_files = 1
+      #   until has_more_files == 0
+      #     result = client.resource_list('project01', :limit => limit, :offset => offset)
+      #     result['files'].each do |file|
+      #       puts script['name']
+      #       puts script['size']
+      #       puts script['timestamp']
+      #     end
+      #     offset += limit
+      #     has_more_files = result['has_more_files']
+      #   end
       # @return [Mushikago::Http::Response] リクエストの結果
       def resource_list project_name, options={}
         request = ResourceListRequest.new(project_name, options)
         send_request(request)
       end
 
-      # TODO resource/getの説明
+      # resource/getを発行します
       #
       # @param [String] project_name プロジェクト名
       # @param [String] file_name 保存先のファイル名
       # @param [Hash] options リクエストのオプション
       # @example
-      #   client.resource_get('project01', 'sample.rb')
+      #   result = client.resource_get('project01', 'sample.rb')
+      #   puts result['url']
       # @return [Mushikago::Http::Response] リクエストの結果
       def resource_get project_name, file_name, options={}
         request = ResourceGetRequest.new(project_name, file_name, options)
         send_request(request)
       end
 
-      # TODO resource/deleteの説明
+      # resource/deleteを発行します
       #
       # @param [String] project_name プロジェクト名
       # @param [String] file_name 保存先のファイル名
