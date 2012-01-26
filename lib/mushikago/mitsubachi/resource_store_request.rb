@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 module Mushikago
   module Mitsubachi
-    class ScriptDeployRequest < MultipartRequest
-      def method_name; 'script/deploy' end
+    class ResourceStoreRequest < MultipartRequest
+      def method_name; 'resource/store' end
       request_parameter :project_name
       request_parameter :file
-      request_parameter :script_name
+      request_parameter :file_name
+      request_parameter :content_type
+      request_parameter :public, :default=>false do |v| (v ? 1 : 0).to_s end
 
       def initialize project_name, file_or_file_name, options={}
         super(options)
@@ -15,7 +17,9 @@ module Mushikago
         else
           self.file = File.new(file_or_file_name.to_s)
         end
-        self.script_name = options[:script_name] || file.path
+        self.file_name = options[:file_name] || file.path
+        self.content_type = options[:content_type] || MIME::Types.of(file.path).first.to_s
+        self.public = options[:public]
       end
 
       def new_http_request
@@ -24,5 +28,6 @@ module Mushikago
     end
   end
 end
+
 
 

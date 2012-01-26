@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+require 'mime/types'
 module Mushikago
   module Http
     class MultipartRequest < Request
@@ -15,9 +16,7 @@ module Mushikago
         http_request.set_content_type "multipart/form-data; boundary=#{boundary}"
         http_request.body = multipart_body(boundary)
         http_request.content_length = http_request.body.size
-        puts http_request.content_type
         puts http_request.body
-        puts http_request.content_length
         return http_request
       end
 
@@ -39,7 +38,7 @@ module Mushikago
           v.rewind
           content_type = ''
           begin
-            content_type = MIME::Types.of(v.path).to_s
+            content_type = MIME::Types.of(v.path).first.to_s
           rescue NameError => e
           ensure
             content_type = "application/octet-stream" if content_type.to_s.empty?

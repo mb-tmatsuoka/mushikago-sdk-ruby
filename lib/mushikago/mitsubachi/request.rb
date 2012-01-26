@@ -6,7 +6,7 @@ module Mushikago
       include Mushikago::Auth::Signature
 
       # @param [Hash] options オプション
-      # @option options [String] :endpoint('tombo.mushikago.org') Mitsubachiのエンドポイント
+      # @option options [String] :endpoint('api.mushikago.org') Mitsubachiのエンドポイント
       def initialize options={}
         super()
         endpoint = options[:endpoint] || Mushikago.config.endpoint

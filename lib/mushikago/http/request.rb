@@ -52,7 +52,7 @@ module Mushikago
         headers.each do |key, value|
           http_request[key] = value
         end
-        http_request.body = url_encoded_params.tap{|s| puts s} if http_request.request_body_permitted?
+        http_request.body = url_encoded_params if http_request.request_body_permitted?
         return http_request
       end
 
