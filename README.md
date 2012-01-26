@@ -5,23 +5,25 @@ Mushikago SDK for Ruby.
 - **Author**:          Toru Matsuoka
 - **Copyright**:       2011
 - **License**:         Apache License, Version 2.0
-- **Latest Version**:  0.2.3
+- **Latest Version**:  0.3.0
 - **Release Date**:    September 13th 2011
 
 
 概要
 ----
 
-[株式会社マイニングブラウニー](http://www.miningbrownie.co.jp/)が提供するMushikago Webサービスを、Rubyから扱うためのライブラリです。
+[株式会社マイニングブラウニー](http://www.miningbrownie.co.jp/)が提供する[mushikago Webサービス](http://www.mushikago.org/)を、Rubyから扱うためのライブラリです。
 
 
 機能一覧
 --------
 
-**1.Tomboを利用する**: [Tombo](http://www.tombo.ne.jp/)は、APIを通してWebサイトのキャプチャ画像を取得するサービスです。
+**1.tomboを利用する**: [tombo](http://www.tombo.ne.jp/)は、APIを通してWebサイトのキャプチャ画像を取得するサービスです。
 キャプチャ画像にはタグをつけて管理することができます。
 キャプチャ画像は非同期で取得され、サーバの混雑具合によってリクエストから取得まで最大1時間の時間差があります。
 
+**2.mitsubachiを利用する**: [mitsubachi](http://www.mushikago.org/mitsubachi/)はウェブサイトをクローリングするためのクラウドプラットフォームサービスです。
+環境構築などの準備を一切必要とせず、ユーザーは簡易なスクリプトをmitsubachiサーバにアップロード するだけで、ウェブ上の欲しい情報を高速に収集し保存します。ユーザーは、少しの技術力とアイデアを持っていれば、新たなクローラビジネスを始める事ができます。
 
 
 インストール方法
@@ -37,9 +39,9 @@ Mushikago SDK for Rubyはgemを使ってインストールします。
 使い方
 ------
 
-### Tomboを利用する
+### tomboを利用する
 
-以下のコードで[Tombo](http://www.tombo.ne.jp/)を利用することができます。
+以下のコードで[tombo](http://www.tombo.ne.jp/)を利用することができます。
 
     require 'rubygems'
     require 'mushikago'
@@ -118,6 +120,8 @@ $ export MUSHIKAGO_SECRET_KEY=&lt;シークレットキー&gt;
 変更履歴
 --------
 
+- **Jan.26.12**: 0.3.0 release
+  - mitsubachiに対応
 - **Sep.13.11**: 0.2.3 release
   - captureメソッドのuseragentに対応
 - **Sep.8.11**: 0.2.1 release
@@ -125,5 +129,4 @@ $ export MUSHIKAGO_SECRET_KEY=&lt;シークレットキー&gt;
 - **Sep.6.11**: 0.1.8 release
   - Mushikago SDK for Ruby新規作成
   - Tombo サポート
-
 
