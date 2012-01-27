@@ -1,12 +1,12 @@
 Mushikago SDK for Ruby.
 =======================
 
-- **Homepage**:        [http://www.miningbrownie.co.jp/](http://www.miningbrownie.co.jp/)
+- **Homepage**:        [http://www.mushikago.org/](http://www.mushikago.org/)
 - **Author**:          Toru Matsuoka
 - **Copyright**:       2011
 - **License**:         Apache License, Version 2.0
-- **Latest Version**:  0.3.2
-- **Release Date**:    January 26th 2012
+- **Latest Version**:  0.3.3
+- **Release Date**:    January 27th 2012
 
 
 概要
@@ -151,6 +151,8 @@ $ export MUSHIKAGO_SECRET_KEY=&lt;シークレットキー&gt;
 変更履歴
 --------
 
+- **Jan.27.12**: 0.3.3 release
+  - 数字を含むリクエストの不具合に対応
 - **Jan.26.12**: 0.3.2 release
   - mitsubachiに対応
 - **Sep.13.11**: 0.2.3 release
