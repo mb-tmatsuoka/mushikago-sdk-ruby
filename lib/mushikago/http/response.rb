@@ -45,6 +45,10 @@ module Mushikago
       def [] key
         response[key]
       end
+
+      def []= key, value
+        response[key] = value
+      end
     end
   end
 end

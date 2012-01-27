@@ -211,13 +211,22 @@ module Mushikago
       # @param [String] project_name プロジェクト名
       # @param [String] script_name デプロイ先のファイル名
       # @param [Hash] options リクエストのオプション
+      # @option options [Boolean] :with_body trueを指定すると、response['body']でファイルの内容にアクセスすることができるようになります。
       # @example
       #   result = client.script_get('project01', 'sample.rb')
       #   puts result['url']
       # @return [Mushikago::Http::Response] リクエストの結果
       def script_get project_name, script_name, options={}
         request = ScriptGetRequest.new(project_name, script_name, options)
-        send_request(request)
+        result = send_request(request)
+        if options[:with_body]
+          begin
+            uri = URI.parse(result['url'])
+            result['body'] = Net::HTTP.get(uri.host, uri.request_uri)
+          rescue
+          end
+        end
+        return result
       end
 
       # script/deleteを発行します
@@ -281,13 +290,22 @@ module Mushikago
       # @param [String] project_name プロジェクト名
       # @param [String] file_name 保存先のファイル名
       # @param [Hash] options リクエストのオプション
+      # @option options [Boolean] :with_body trueを指定すると、response['body']でファイルの内容にアクセスすることができるようになります。
       # @example
       #   result = client.resource_get('project01', 'sample.rb')
       #   puts result['url']
       # @return [Mushikago::Http::Response] リクエストの結果
       def resource_get project_name, file_name, options={}
         request = ResourceGetRequest.new(project_name, file_name, options)
-        send_request(request)
+        result = send_request(request)
+        if options[:with_body]
+          begin
+            uri = URI.parse(result['url'])
+            result['body'] = Net::HTTP.get(uri.host, uri.request_uri)
+          rescue
+          end
+        end
+        return result
       end
 
       # resource/deleteを発行します
