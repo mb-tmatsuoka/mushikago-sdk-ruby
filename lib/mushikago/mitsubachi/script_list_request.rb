@@ -4,8 +4,8 @@ module Mushikago
     class ScriptListRequest < Request
       def method_name; 'script/list' end
       request_parameter :project_name
-      request_parameter :limit do |v| v.to_i end
-      request_parameter :offset do |v| v.to_i end
+      request_parameter :limit do |v| v.to_i.to_s end
+      request_parameter :offset do |v| v.to_i.to_s end
       request_parameter :filter
 
       def initialize project_name, options={}

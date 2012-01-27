@@ -272,6 +272,7 @@ module Mushikago
       #   end
       # @return [Mushikago::Http::Response] リクエストの結果
       def resource_list project_name, options={}
+        puts options
         request = ResourceListRequest.new(project_name, options)
         send_request(request)
       end
