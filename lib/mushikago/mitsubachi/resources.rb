@@ -18,7 +18,7 @@ module Mushikago
         client.resource_store(project_name, resource_file, options)
       end
 
-      def list, options={}
+      def list options={}
         client.resource_list(project_name, options)['files'].map{|p| self[p['name']]}
       end
 
