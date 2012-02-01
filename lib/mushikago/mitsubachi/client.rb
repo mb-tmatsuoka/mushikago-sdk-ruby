@@ -15,6 +15,9 @@ module Mushikago
     #   Mushikago.config.load(YAML.load(File.read('config.yml')))
     #   client = Mushikago::Mitsubachi::Client.new
     class Client < Mushikago::Http::Client
+      def projects
+        Mitsubachi::Projects.new(self)
+      end
       # project/createを発行します
       #
       # @param [String] project_name プロジェクト名

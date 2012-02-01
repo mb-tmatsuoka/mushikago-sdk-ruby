@@ -29,6 +29,14 @@ module Mushikago
     autoload :ResourceGetRequest, 'mushikago/mitsubachi/resource_get_request'
     autoload :ResourceListRequest, 'mushikago/mitsubachi/resource_list_request'
     autoload :ResourceDeleteRequest, 'mushikago/mitsubachi/resource_delete_request'
+    
+    # wrapper
+    autoload :Projects, 'mushikago/mitsubachi/projects'
+    autoload :Project, 'mushikago/mitsubachi/project'
+    autoload :Scripts, 'mushikago/mitsubachi/scripts'
+    autoload :Script, 'mushikago/mitsubachi/script'
+    autoload :Resources, 'mushikago/mitsubachi/resources'
+    autoload :Resource, 'mushikago/mitsubachi/resource'
   end
 end
 
