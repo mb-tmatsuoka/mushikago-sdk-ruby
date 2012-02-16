@@ -168,6 +168,19 @@ module Mushikago
         return result
       end
 
+      # ドメイン内のタグ一覧を取得する
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [Hash] options リクエストのオプション
+      # @option options [String] :filter
+      # @example
+      #   client.tag_list('sample_domain')
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def tag_list domain_name, options={}
+        request = Hotaru::TagListRequest.new(domain_name, options)
+        send_request(request)
+      end
+
       # 単語の一覧を取得する
       #
       # @param [Hash] options リクエストのオプション
