@@ -31,6 +31,20 @@ module Mushikago
         request = Hotaru::DomainCreateRequest.new(domain_name, splitter, options)
         send_request(request)
       end
+
+      # ドメインの情報を参照する
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [Hash] options リクエストのオプション
+      # @option options [Integer] :time
+      # @example
+      #   client.domain_info('sample_domain')
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def domain_info domain_name, options={}
+        request = Hotaru::DomainInfoRequest.new(domain_name, options)
+        send_request(request)
+      end
+
     end
   end
 end

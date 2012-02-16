@@ -6,5 +6,6 @@ module Mushikago
     autoload :Request, 'mushikago/hotaru/request'
 
     autoload :DomainCreateRequest, 'mushikago/hotaru/domain_create_request'
+    autoload :DomainInfoRequest, 'mushikago/hotaru/domain_info_request'
   end
 end
