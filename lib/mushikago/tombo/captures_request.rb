@@ -2,14 +2,14 @@
 module Mushikago
   module Tombo
     # キャプチャ一覧取得リクエスト
-    class CapturesRequest < Request
-      def method_name; 'captures' end
+    class CapturesRequest < Mushikago::Http::GetRequest
+      def path; '/1/tombo/captures' end
 
-      add_param :id
-      add_param :limit
-      add_param :offset
-      add_param :domain
-      add_param :tag
+      request_parameter :id
+      request_parameter :limit
+      request_parameter :offset
+      request_parameter :domain
+      request_parameter :tag
 
       # @param [Hash] options リクエストのオプション
       # @option options [String] :id 画像のID

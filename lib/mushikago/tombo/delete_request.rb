@@ -2,21 +2,16 @@
 module Mushikago
   module Tombo
     # Deleteリクエスト
-    class DeleteRequest < Request
-      def method_name; 'delete' end
+    class DeleteRequest < Mushikago::Http::DeleteRequest
+      def path; '/1/tombo/delete' end
 
-      add_param :id
+      request_parameter :id
 
       # @param [String] id 画像のID
       # @param [Hash] options リクエストのオプション
       def initialize id, options={}
         super(options)
         self.id = id
-      end
-
-      # @private
-      def new_http_request
-        new_http_delete_request("#{path}?#{url_encoded_params}")
       end
     end
   end

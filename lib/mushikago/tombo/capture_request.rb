@@ -2,15 +2,15 @@
 module Mushikago
   module Tombo
     # キャプチャリクエスト
-    class CaptureRequest < Request
-      def method_name; 'capture' end
+    class CaptureRequest < Mushikago::Http::PostRequest
+      def path; '/1/tombo/capture' end
 
-      add_param :url
-      add_param :image_format
-      add_param :image_quality do |v| v.to_i.to_s end
-      add_param :thumbnail do |v| (v ? 1 : 0).to_s end
-      add_param :tags do |v| [v].flatten.compact.join(',') end
-      add_param :useragent
+      request_parameter :url
+      request_parameter :image_format
+      request_parameter :image_quality do |v| v.to_i.to_s end
+      request_parameter :thumbnail do |v| (v ? 1 : 0).to_s end
+      request_parameter :tags do |v| [v].flatten.compact.join(',') end
+      request_parameter :useragent
 
       # @param [String] url キャプチャ対象のURL
       # @param [Hash] options リクエストのオプション
@@ -28,11 +28,6 @@ module Mushikago
         self.tags = options[:tags] if options.has_key?(:tags)
         self.useragent = options[:useragent] if options.has_key?(:useragent)
         @headers['Content-type'] = 'application/x-www-form-urlencoded; charset=utf-8'
-      end
-
-      # @private
-      def new_http_request
-        new_http_post_request(path)
       end
     end
   end
