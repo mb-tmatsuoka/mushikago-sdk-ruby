@@ -139,6 +139,20 @@ module Mushikago
         send_request(request)
       end
 
+      # 共起語を取得する
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [String] collocation_id 共起ID
+      # @param [String] word 共起語を取得したい単語
+      # @param [Hash] options リクエストのオプション
+      # @example
+      #   client.collocation_get('sample_domain', 'c12345', '我輩')
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def collocation_get domain_name, collocation_id, word, options={}
+        request = Hotaru::CollocationGetRequest.new(domain_name, collocation_id, word, options)
+        send_request(request)
+      end
+
       # 共起グラフをダウンロードする
       #
       # @param [String] domain_name ドメイン名

@@ -4,11 +4,14 @@ module Mushikago
     class CollocationGetRequest < Mushikago::Http::GetRequest
       def path; '/1/hotaru/collocation/get' end
       request_parameter :domain_name
+      request_parameter :collocation_id
+      request_parameter :word
 
-      def initialize domain_name, options={}
+      def initialize domain_name, collocation_id, word, options={}
         super(options)
         self.domain_name = domain_name
-#        self._param = options[:_param] if options.has_key?(:_param)
+        self.collocation_id = collocation_id
+        self.word = word
       end
     end
   end
