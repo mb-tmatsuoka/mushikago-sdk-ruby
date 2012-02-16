@@ -139,6 +139,21 @@ module Mushikago
         send_request(request)
       end
 
+      # 単語の一覧を取得する
+      #
+      # @param [Hash] options リクエストのオプション
+      # @param [String] domain_name ドメイン名
+      # @option options [Integer] :limit
+      # @option options [Integer] :offset
+      # @option options [String] :filter
+      # @example
+      #   client.word_list 'sample_domain'
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def word_list domain_name, options={}
+        request = Hotaru::WordListRequest.new(options)
+        send_request(request)
+      end
+
       # 指定した単語の詳細な情報を返す
       #
       # @param [String] domain_name ドメイン名
