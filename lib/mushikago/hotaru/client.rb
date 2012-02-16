@@ -153,6 +153,22 @@ module Mushikago
         send_request(request)
       end
 
+      # 共起グラフ内の単語一覧を取得する
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [String] collocation_id 共起ID
+      # @param [Hash] options リクエストのオプション
+      # @option options [Integer] :limit
+      # @option options [Integer] :offset
+      # @option options [String] :filter
+      # @example
+      #   client.collocation_wordlist('sample_domain', 'c12345')
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def collocation_wordlist domain_name, collocation_id, options={}
+        request = Hotaru::CollocationWordlistRequest.new(domain_name, collocation_id, options)
+        send_request(request)
+      end
+
       # 共起グラフをダウンロードする
       #
       # @param [String] domain_name ドメイン名

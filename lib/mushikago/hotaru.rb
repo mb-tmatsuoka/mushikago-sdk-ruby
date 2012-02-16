@@ -26,7 +26,7 @@ module Mushikago
     autoload :CollocationGetRequest, 'mushikago/hotaru/collocation_get_request'
     autoload :CollocationCreateRequest, 'mushikago/hotaru/collocation_create_request'
     autoload :CollocationDownloadRequest, 'mushikago/hotaru/collocation_download_request'
-    autoload :CollocationWordcountRequest, 'mushikago/hotaru/collocation_wordcount_request'
+    autoload :CollocationWordlistRequest, 'mushikago/hotaru/collocation_wordlist_request'
 
     # tag
     autoload :TagListRequest, 'mushikago/hotaru/tag_list_request'
