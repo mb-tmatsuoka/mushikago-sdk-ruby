@@ -49,9 +49,7 @@ module Mushikago
             %Q||,
             %Q|#{v.read}|
           ].join(EOL)
-          content << EOL
         end
-        content << EOL
         content << %Q|--#{boundary}--|
         content << EOL
         return content
