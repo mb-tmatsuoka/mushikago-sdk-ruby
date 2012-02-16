@@ -86,6 +86,19 @@ module Mushikago
         send_request(request)
       end
 
+      # テキストを削除する 
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [String] text_id テキストID
+      # @param [Hash] options リクエストのオプション
+      # @example
+      #   client.text_delete 'sample_domain', 'text_id'
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def text_delete domain_name, text_id, options={}
+        request = Hotaru::TextDeleteRequest.new(domain_name, text_id, options)
+        send_request(request)
+      end
+
       # 指定されたtextにふさわしいtagを返す
       #
       # @param [String] domain_name ドメイン名
