@@ -3,8 +3,6 @@ module Mushikago
   # mitsubachiにアクセスするためのモジュール
   module Mitsubachi
     autoload :Client, 'mushikago/mitsubachi/client'
-    autoload :Request, 'mushikago/mitsubachi/request'
-    autoload :MultipartRequest, 'mushikago/mitsubachi/multipart_request'
 
     # project
     autoload :ProjectCreateRequest, 'mushikago/mitsubachi/project_create_request'

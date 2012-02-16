@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 module Mushikago
   module Mitsubachi
-    class ProjectInfoRequest < Request
-      def method_name; 'project/info' end
+    class ProjectInfoRequest < Mushikago::Http::GetRequest
+      def path; '/1/mitsubachi/project/info' end
       request_parameter :project_name
       request_parameter :time do |v| v.to_i.to_s end
 

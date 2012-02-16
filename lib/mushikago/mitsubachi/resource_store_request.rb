@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 module Mushikago
   module Mitsubachi
-    class ResourceStoreRequest < MultipartRequest
-      def method_name; 'resource/store' end
+    class ResourceStoreRequest < Mushikago::Http::MultipartPostRequest
+      def path; '/1/mitsubachi/resource/store' end
       request_parameter :project_name
       request_parameter :file
       request_parameter :file_name
@@ -20,10 +20,6 @@ module Mushikago
         self.file_name = options[:file_name] || file.path
         self.content_type = options[:content_type] || MIME::Types.of(file.path).first.to_s
         self.public = options[:public]
-      end
-
-      def new_http_request
-        new_http_post_request(path)
       end
     end
   end

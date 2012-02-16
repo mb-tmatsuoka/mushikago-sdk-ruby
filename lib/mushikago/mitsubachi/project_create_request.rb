@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 module Mushikago
   module Mitsubachi
-    class ProjectCreateRequest < Request
-      def method_name; 'project/create' end
+    class ProjectCreateRequest < Mushikago::Http::PostRequest
+      def path; '/1/mitsubachi/project/create' end
       request_parameter :project_name
       request_parameter :dedicated, :default=>false do |v| (v ? 1 : 0).to_s end
       request_parameter :max_lead_time do |v| v.to_i.to_s end
@@ -20,10 +20,6 @@ module Mushikago
         self.stderr = options[:stderr]
         self.system_log = options[:system_log]
         self.log_prefix = options[:log_prefix] if options.has_key?(:log_prefix)
-      end
-
-      def new_http_request
-        new_http_post_request(path)
       end
     end
   end

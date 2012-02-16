@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 module Mushikago
   module Mitsubachi
-    class ProjectQueuesRequest < Request
-      def method_name; 'project/queues' end
+    class ProjectQueuesRequest < Mushikago::Http::GetRequest
+      def path; '/1/mitsubachi/project/queues' end
       request_parameter :project_name
 
       def initialize project_name, options={}

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 module Mushikago
   module Mitsubachi
-    class HttpFetchRequest < Request
-      def method_name; 'http/fetch.json' end
+    class HttpFetchRequest < Mushikago::Http::PostRequest
+      def path; '/1/mitsubachi/http/fetch.json' end
       request_parameter :url
       request_parameter :project_name
       request_parameter :script_name
@@ -22,10 +22,6 @@ module Mushikago
         self.follow_redirect = options[:follow_redirect] if options.has_key?(:follow_redirect)
         self.parameters = options[:parameters] if options.has_key?(:parameters)
         self.header_overwrite = options[:header_overwrite] if options.has_key?(:header_overwrite)
-      end
-
-      def new_http_request
-        new_http_post_request(path)
       end
     end
   end

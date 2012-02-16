@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 module Mushikago
   module Mitsubachi
-    class ResourceListRequest < Request
-      def method_name; 'resource/list' end
+    class ResourceListRequest < Mushikago::Http::GetRequest
+      def path; '/1/mitsubachi/resource/list' end
       request_parameter :project_name
       request_parameter :limit do |v| v.to_i.to_s end
       request_parameter :offset do |v| v.to_i.to_s end

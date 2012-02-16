@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 module Mushikago
   module Mitsubachi
-    class ScriptGetRequest < Request
-      def method_name; 'script/get' end
+    class ScriptGetRequest < Mushikago::Http::GetRequest
+      def path; '/1/mitsubachi/script/get' end
       request_parameter :project_name
       request_parameter :script_name
 
