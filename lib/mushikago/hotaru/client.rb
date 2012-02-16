@@ -99,6 +99,21 @@ module Mushikago
         send_request(request)
       end
 
+      # テキストにヒモ付たタグの追加更新
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [String] text_id テキストID
+      # @param [String,Array] tags タグ
+      # @param [Hash] options リクエストのオプション
+      # @option options [String] :replace tagを追加する場合false, 入れ替える場合true
+      # @example
+      #   client.text_tagset 'sample_domain', 'text_id', ['hoge']
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def text_tagset domain_name, text_id, tags, options={}
+        request = Hotaru::TextTagsetRequest.new(domain_name, text_id, tags, options)
+        send_request(request)
+      end
+
       # 指定されたtextにふさわしいtagを返す
       #
       # @param [String] domain_name ドメイン名
