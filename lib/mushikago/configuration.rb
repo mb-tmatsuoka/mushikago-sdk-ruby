@@ -40,6 +40,7 @@ module Mushikago
     add_option :api_key, ENV['MUSHIKAGO_API_KEY'] || ENV['MUSHIKAGO_API_KEY_ID']
     add_option :secret_key, ENV['MUSHIKAGO_SECRET_KEY'] || ENV['MUSHIKAGO_SECRET_ACCESS_KEY']
     add_option :endpoint, 'api.mushikago.org'
+    add_option :use_ssl, true
 
     # @private
     private

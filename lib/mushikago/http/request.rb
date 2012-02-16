@@ -21,7 +21,7 @@ module Mushikago
       def initialize
         @headers = {}
         @host = ''
-        @port = 80
+        @port = nil
         @path = '/'
         @params = {} 
         @http_method = new_http_request.method
