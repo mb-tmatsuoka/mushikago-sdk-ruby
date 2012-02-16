@@ -139,6 +139,28 @@ module Mushikago
         send_request(request)
       end
 
+      # 共起グラフをダウンロードする
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [String] collocation_id 共起ID
+      # @param [Hash] options リクエストのオプション
+      # @option options [Boolean] :with_body trueを指定すると、response['body']でファイルの内容にアクセスすることができるようになります。
+      # @example
+      #   client.collocation_download('sample_domain', 'c12345')
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def collocation_download domain_name, collocation_id, options={}
+        request = Hotaru::CollocationDownloadRequest.new(domain_name, collocation_id, options)
+        result = send_request(request)
+        if options[:with_body]
+          begin
+            uri = URI.parse(result['url'])
+            result['body'] = Net::HTTP.get(uri.host, uri.request_uri)
+          rescue
+          end
+        end
+        return result
+      end
+
       # 単語の一覧を取得する
       #
       # @param [Hash] options リクエストのオプション
