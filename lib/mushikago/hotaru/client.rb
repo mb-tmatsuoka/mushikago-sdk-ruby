@@ -93,6 +93,19 @@ module Mushikago
         request = Hotaru::DictionaryListRequest.new(options)
         send_request(request)
       end
+
+      # 指定されたtextにふさわしいtagを返す
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [String] text text
+      # @param [Hash] options リクエストのオプション
+      # @example
+      #   client.classifier_judge
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def classifier_judge domain_name, text, options={}
+        request = Hotaru::ClassifierJudge.new(domain_name, text, options)
+        send_request(request)
+      end
     end
   end
 end
