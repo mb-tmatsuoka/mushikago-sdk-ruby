@@ -82,6 +82,11 @@ module Mushikago
       end
 
       private
+      def new_http_put_request(request_path)
+        Net::HTTP::Put.new(request_path)
+      end
+
+      private
       def new_http_delete_request(request_path)
         Net::HTTP::Delete.new(request_path)
       end
