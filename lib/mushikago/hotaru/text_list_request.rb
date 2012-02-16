@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 module Mushikago
   module Hotaru
-    class TextListRequest < Request
-      def method_name; 'text/list' end
+    class TextListRequest < Mushikago::Http::GetRequest
+      def path; '/1/hotaru/text/list' end
       request_parameter :domain_name
       request_parameter :limit do |v| v.to_i.to_s end
       request_parameter :offset do |v| v.to_i.to_s end

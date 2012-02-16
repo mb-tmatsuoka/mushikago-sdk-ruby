@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 module Mushikago
   module Hotaru
-    class CollocationListRequest < Request
-      def method_name; 'collocation/list' end
+    class CollocationListRequest < Mushikago::Http::GetRequest
+      def path; '/1/hotaru/collocation/list' end
       request_parameter :domain_name
       request_parameter :limit do |v| v.to_i.to_s end
       request_parameter :offset do |v| v.to_i.to_s end

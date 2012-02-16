@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 module Mushikago
   module Hotaru
-    class DomainListRequest < Request
-      def method_name; 'domain/list' end
+    class DomainListRequest < Mushikago::Http::GetRequest
+      def path; '/1/hotaru/domain/list' end
       request_parameter :limit do |v| v.to_i.to_s end
       request_parameter :offset do |v| v.to_i.to_s end
       request_parameter :filter

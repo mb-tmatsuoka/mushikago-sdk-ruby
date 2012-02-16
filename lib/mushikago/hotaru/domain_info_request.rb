@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 module Mushikago
   module Hotaru
-    class DomainInfoRequest < Request
-      def method_name; 'domain/info' end
+    class DomainInfoRequest < Mushikago::Http::GetRequest
+      def path; '/1/hotaru/domain/info' end
       request_parameter :domain_name
       request_parameter :time do |v| v.to_i end
 
