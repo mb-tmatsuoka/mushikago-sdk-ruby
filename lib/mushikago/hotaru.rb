@@ -30,6 +30,7 @@ module Mushikago
 
     # tag
     autoload :TagPutRequest, 'mushikago/hotaru/tag_put_request'
+    autoload :TagDeleteRequest, 'mushikago/hotaru/tag_delete_request'
     autoload :TagListRequest, 'mushikago/hotaru/tag_list_request'
 
     # word
