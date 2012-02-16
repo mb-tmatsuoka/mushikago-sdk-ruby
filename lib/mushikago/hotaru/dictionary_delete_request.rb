@@ -1,14 +1,13 @@
 # -*- coding : utf-8 -*-
 module Mushikago
   module Hotaru
-    class DictionaryDeleteRequest < Mushikago::Http::GetRequest
+    class DictionaryDeleteRequest < Mushikago::Http::DeleteRequest
       def path; '/1/hotaru/dictionary/delete' end
-      request_parameter :domain_name
+      request_parameter :dictionary_id
 
-      def initialize domain_name, options={}
+      def initialize dictionary_id, options={}
         super(options)
-        self.domain_name = domain_name
-#        self._param = options[:_param] if options.has_key?(:_param)
+        self.dictionary_id = dictionary_id
       end
     end
   end

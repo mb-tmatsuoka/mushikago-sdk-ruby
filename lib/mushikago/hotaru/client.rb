@@ -94,6 +94,18 @@ module Mushikago
         send_request(request)
       end
 
+      # 辞書を削除する 
+      #
+      # @param [String] dictionary_id 辞書ID
+      # @param [Hash] options リクエストのオプション
+      # @example
+      #   client.dictionary_delete('dicid')
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def dictionary_delete dictionary_id options={}
+        request = Hotaru::DictionaryDeleteRequest.new(dictionary_id, options)
+        send_request(request)
+      end
+
       # 指定されたtextにふさわしいtagを返す
       #
       # @param [String] domain_name ドメイン名
