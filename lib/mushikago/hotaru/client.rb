@@ -136,6 +136,23 @@ module Mushikago
         return result
       end
 
+      # テキスト一覧を取得する
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [Hash] options リクエストのオプション
+      # @option options [Integer] :limit
+      # @option options [Integer] :offset
+      # @option options [String] :filter
+      # @option options [String,Array] :tags
+      # @option options [String] :status
+      # @example
+      #   client.text_list('sample_domain')
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def text_list domain_name, options={}
+        request = Hotaru::TextListRequest.new(domain_name, collocation_id, options)
+        send_request(request)
+      end
+
       # 指定されたtextにふさわしいtagを返す
       #
       # @param [String] domain_name ドメイン名
