@@ -71,41 +71,6 @@ module Mushikago
         send_request(request)
       end
 
-      # 辞書を登録する 
-      #
-      # @param [String,File] dictionary_file 辞書ファイル
-      # @param [Hash] options リクエストのオプション
-      # @example
-      #   client.dictionary_put 'custom.csv', :dictionary_name => 'mushikago用語'
-      # @return [Mushikago::Http::Response] リクエストの結果
-      def dictionary_put dictionary_file, options={}
-        request = Hotaru::DictionaryPutRequest.new(dictionary_file, options)
-        send_request(request)
-      end
-
-      # 辞書の一覧を取得する 
-      #
-      # @param [Hash] options リクエストのオプション
-      # @example
-      #   client.dictionary_list
-      # @return [Mushikago::Http::Response] リクエストの結果
-      def dictionary_list options={}
-        request = Hotaru::DictionaryListRequest.new(options)
-        send_request(request)
-      end
-
-      # 辞書を削除する 
-      #
-      # @param [String] dictionary_id 辞書ID
-      # @param [Hash] options リクエストのオプション
-      # @example
-      #   client.dictionary_delete('dicid')
-      # @return [Mushikago::Http::Response] リクエストの結果
-      def dictionary_delete dictionary_id options={}
-        request = Hotaru::DictionaryDeleteRequest.new(dictionary_id, options)
-        send_request(request)
-      end
-
       # 指定されたtextにふさわしいtagを返す
       #
       # @param [String] domain_name ドメイン名
@@ -228,6 +193,41 @@ module Mushikago
       # @return [Mushikago::Http::Response] リクエストの結果
       def word_get domain_name, word, options={}
         request = Hotaru::WordGetRequest.new(domain_name, word, options)
+        send_request(request)
+      end
+
+      # 辞書を登録する 
+      #
+      # @param [String,File] dictionary_file 辞書ファイル
+      # @param [Hash] options リクエストのオプション
+      # @example
+      #   client.dictionary_put 'custom.csv', :dictionary_name => 'mushikago用語'
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def dictionary_put dictionary_file, options={}
+        request = Hotaru::DictionaryPutRequest.new(dictionary_file, options)
+        send_request(request)
+      end
+
+      # 辞書の一覧を取得する 
+      #
+      # @param [Hash] options リクエストのオプション
+      # @example
+      #   client.dictionary_list
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def dictionary_list options={}
+        request = Hotaru::DictionaryListRequest.new(options)
+        send_request(request)
+      end
+
+      # 辞書を削除する 
+      #
+      # @param [String] dictionary_id 辞書ID
+      # @param [Hash] options リクエストのオプション
+      # @example
+      #   client.dictionary_delete('dicid')
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def dictionary_delete dictionary_id options={}
+        request = Hotaru::DictionaryDeleteRequest.new(dictionary_id, options)
         send_request(request)
       end
     end
