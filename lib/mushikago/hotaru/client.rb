@@ -106,6 +106,25 @@ module Mushikago
         request = Hotaru::ClassifierJudge.new(domain_name, text, options)
         send_request(request)
       end
+
+      # 共起グラフを作成する
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [String,Array] tags タグ
+      # @param [Hash] options リクエストのオプション
+      # @option options [String,Array] :parts_of_speech 共起を取る単語の品詞
+      # @option options [String] :collocation_name 共起グラフにつける名前
+      # @option options [String] :lower_threshold 単語の出現数下限
+      # @option options [String] :upper_threshold 単語の出現数上限
+      # @option options [String] :description 共起グラフの説明
+      # @example
+      #   client.collocation_create('sample_domain', ['tag1', 'tag2'])
+      #   client.collocation_create('sample_domain', 'tag1', :parts_of_speech => Mushikago::Hotaru::CollocationCreateRequest::POS_LARGE)
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def collocation_create domain_name, tags, options={}
+        request = Hotaru::CollocationCreateRequest.new(domain_name, tags, options)
+        send_request(request)
+      end
     end
   end
 end
