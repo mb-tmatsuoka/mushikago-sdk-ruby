@@ -23,5 +23,3 @@ module Mushikago
   end
 end
 
-
-

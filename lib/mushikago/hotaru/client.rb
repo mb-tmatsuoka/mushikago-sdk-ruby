@@ -45,6 +45,20 @@ module Mushikago
         send_request(request)
       end
 
+      # ドメインの一覧を取得する
+      #
+      # @param [Hash] options リクエストのオプション
+      # @option options [Integer] :limit
+      # @option options [Integer] :offset
+      # @option options [String] :filter
+      # @example
+      #   client.domain_list
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def domain_list options={}
+        request = Hotaru::DomainListRequest.new(options)
+        send_request(request)
+      end
+
     end
   end
 end
