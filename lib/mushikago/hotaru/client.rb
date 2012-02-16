@@ -59,6 +59,17 @@ module Mushikago
         send_request(request)
       end
 
+      # ドメインを削除する
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [Hash] options リクエストのオプション
+      # @example
+      #   client.domain_delete 'sample_domain'
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def domain_delete domain_name, options={}
+        request = Hotaru::DomainDeleteRequest.new(domain_name, options)
+        send_request(request)
+      end
     end
   end
 end
