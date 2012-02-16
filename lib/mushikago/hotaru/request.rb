@@ -6,14 +6,14 @@ module Mushikago
       include Mushikago::Auth::Signature
 
       # @param [Hash] options オプション
-      # @option options [String] :endpoint('hotaru.mushikago.org') Hotaruのエンドポイント
+      # @option options [String] :endpoint('api.mushikago.org') Hotaruのエンドポイント
       def initialize options={}
         super()
-        endpoint = options[:endpoint] || Mushikago.config.hotaru_endpoint
+        endpoint = options[:endpoint] || Mushikago.config.endpoint
         host, port = endpoint.split(':')
         @host = host
         @port = port if port
-        @path = "/#{api_version}/#{method_name}"
+        @path = "/#{api_version}/hotaru/#{method_name}"
       end
 
       # @private

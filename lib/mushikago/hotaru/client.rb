@@ -17,58 +17,18 @@ module Mushikago
     #   Mushikago.config.load(YAML.load(File.read('config.yml')))
     #   client = Mushikago::Hotaru::Client.new
     class Client < Mushikago::Http::Client
-      # 指定したURLのキャプチャを取得する
+      # ドメインを作成する
       #
-      # @param [String] url キャプチャ対象のURL
+      # @param [String] domain_name ドメイン名
+      # @param [String] splitter スプリッター
       # @param [Hash] options リクエストのオプション
-      # @option options [String] :image_format('jpg') 画像のフォーマット(jpg,png)
-      # @option options [Integer] :image_quality(80) 画像の品質(0-100)
-      # @option options [Boolean] :thumbnail(0) サムネイル取得フラグ(false:取得しない,true:取得する)
-      # @option options [String,Array] :tags タグ
+      # @option options [String] :description ドメインの説明
+      # @option options [String,Array] :dictionary_ids ユーザ辞書のID
       # @example
-      #   client.capture('http://www.hotaru.ne.jp/', :thumbnail => true, :tags => ['hotaru', 'webservice'])
+      #   client.domain_create('sample_domain', '2gram')
       # @return [Mushikago::Http::Response] リクエストの結果
-      def capture url, options={}
-        request = CaptureRequest.new(url, options)
-        send_request(request)
-      end
-
-      # いままでキャプチャした画像の情報を取得する
-      #
-      # @param [Hash] options リクエストのオプション
-      # @option options [String] :id 画像のID
-      # @option options [String] :domain 指定したドメインの画像一覧を取得する
-      # @option options [String] :tag 指定したタグの画像一覧を取得する
-      # @option options [Integer] :limit(10) 最大取得件数(1-100)
-      # @option options [Integer] :offset(0) 取得オフセット
-      # @example
-      #   client.captures(:tag => 'webservice')
-      # @return [Mushikago::Http::Response] リクエストの結果
-      def captures options={}
-        request = CapturesRequest.new(options)
-        send_request(request)
-      end
-
-      # 指定した画像を削除する
-      #
-      # @param [String] id 画像のID
-      # @param [Hash] options リクエストのオプション
-      # @example
-      #   client.delete('5a6cdfa3-xxx3-47d6-8xxx-5f83af6b66cc')
-      # @return [Mushikago::Http::Response] リクエストの結果
-      def delete id, options={}
-        request = DeleteRequest.new(id, options)
-        send_request(request)
-      end
-
-      # APIの使用状況を取得する
-      #
-      # @param [Hash] options リクエストのオプション
-      # @example
-      #   client.info
-      # @return [Mushikago::Http::Response] リクエストの結果
-      def info options={}
-        request = InfoRequest.new(options)
+      def domain_create domain_name, splitter, options={}
+        request = Hotaru::DomainCreateRequest.new(domain_name, splitter, options)
         send_request(request)
       end
     end
