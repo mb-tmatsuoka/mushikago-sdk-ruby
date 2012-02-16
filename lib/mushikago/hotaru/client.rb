@@ -125,6 +125,19 @@ module Mushikago
         request = Hotaru::CollocationCreateRequest.new(domain_name, tags, options)
         send_request(request)
       end
+
+      # 共起グラフを削除する
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [String] collocation_id 共起ID
+      # @param [Hash] options リクエストのオプション
+      # @example
+      #   client.collocation_delete('sample_domain', 'c12345')
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def collocation_delete domain_name, collocation_id, options={}
+        request = Hotaru::CollocationDeleteRequest.new(domain_name, collocation_id, options)
+        send_request(request)
+      end
     end
   end
 end
