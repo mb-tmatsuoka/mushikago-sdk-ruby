@@ -7,8 +7,6 @@ module Mushikago
     class Request
       # @return [Hash] headers
       attr_reader :headers
-      # @return [String] http_method
-      attr_accessor :http_method
       # @return [String] host 
       attr_accessor :host
       # @return [Integer] port 
@@ -18,13 +16,14 @@ module Mushikago
       # @return [String] params
       attr_reader :params
 
-      def initialize
+      def initialize options={}
         @headers = {}
-        @host = ''
-        @port = nil
+        endpoint = options[:endpoint] || Mushikago.config.endpoint
+        host, port = endpoint.split(':')
+        @host = host
+        @port = port
         @path = '/'
-        @params = {} 
-        @http_method = new_http_request.method
+        @params = {}
       end
 
       # @param [String] key パラメータのキー
