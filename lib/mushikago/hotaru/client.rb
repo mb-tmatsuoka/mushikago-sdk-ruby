@@ -71,6 +71,21 @@ module Mushikago
         send_request(request)
       end
 
+      # テキストを登録する 
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [String] text テキスト
+      # @param [String] tags タグ
+      # @param [Hash] options リクエストのオプション
+      # @option options [String] :text_name テキストにつける名前
+      # @example
+      #   client.text_put 'sample_domain', '吾輩は猫である。名前はまだない。....', ['夏目漱石'], :text_name => '吾輩は猫である'
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def text_put domain_name, text, tags, options={}
+        request = Hotaru::TextPutRequest.new(domain_name, text, tags, options)
+        send_request(request)
+      end
+
       # 指定されたtextにふさわしいtagを返す
       #
       # @param [String] domain_name ドメイン名
