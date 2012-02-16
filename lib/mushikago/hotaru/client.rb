@@ -149,7 +149,7 @@ module Mushikago
       #   client.text_list('sample_domain')
       # @return [Mushikago::Http::Response] リクエストの結果
       def text_list domain_name, options={}
-        request = Hotaru::TextListRequest.new(domain_name, collocation_id, options)
+        request = Hotaru::TextListRequest.new(domain_name, options)
         send_request(request)
       end
 
