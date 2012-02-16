@@ -4,11 +4,12 @@ module Mushikago
     class WordGetRequest < Mushikago::Http::GetRequest
       def path; '/1/hotaru/word/get' end
       request_parameter :domain_name
+      request_parameter :word
 
-      def initialize domain_name, options={}
+      def initialize domain_name, word, options={}
         super(options)
         self.domain_name = domain_name
-#        self._param = options[:_param] if options.has_key?(:_param)
+        self.word = word
       end
     end
   end

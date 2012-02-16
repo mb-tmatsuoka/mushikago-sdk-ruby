@@ -138,6 +138,19 @@ module Mushikago
         request = Hotaru::CollocationDeleteRequest.new(domain_name, collocation_id, options)
         send_request(request)
       end
+
+      # 指定した単語の詳細な情報を返す
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [String] word
+      # @param [Hash] options リクエストのオプション
+      # @example
+      #   client.word_get('sample_domain', '我輩')
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def word_get domain_name, word, options={}
+        request = Hotaru::WordGetRequest.new(domain_name, word, options)
+        send_request(request)
+      end
     end
   end
 end
