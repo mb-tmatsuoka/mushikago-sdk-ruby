@@ -29,6 +29,7 @@ module Mushikago
     autoload :CollocationWordlistRequest, 'mushikago/hotaru/collocation_wordlist_request'
 
     # tag
+    autoload :TagPutRequest, 'mushikago/hotaru/tag_put_request'
     autoload :TagListRequest, 'mushikago/hotaru/tag_list_request'
 
     # word

@@ -266,6 +266,19 @@ module Mushikago
         return result
       end
 
+      # ドメインにタグを登録する
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [String] tag タグ
+      # @param [Hash] options リクエストのオプション
+      # @example
+      #   client.tag_put('sample_domain', 'tag1')
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def tag_put domain_name, tag, options={}
+        request = Hotaru::TagPutRequest.new(domain_name, tag, options)
+        send_request(request)
+      end
+
       # ドメイン内のタグ一覧を取得する
       #
       # @param [String] domain_name ドメイン名
