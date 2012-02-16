@@ -363,7 +363,7 @@ module Mushikago
       # @example
       #   client.dictionary_delete('dicid')
       # @return [Mushikago::Http::Response] リクエストの結果
-      def dictionary_delete dictionary_id options={}
+      def dictionary_delete dictionary_id, options={}
         request = Hotaru::DictionaryDeleteRequest.new(dictionary_id, options)
         send_request(request)
       end
