@@ -19,6 +19,7 @@ module Mushikago
     autoload :CollocationListRequest, 'mushikago/hotaru/collocation_list_request'
 
     # dictionary
+    autoload :DictionaryPutRequest, 'mushikago/hotaru/dictionary_put_request'
     autoload :DictionaryListRequest, 'mushikago/hotaru/dictionary_list_request'
   end
 end
