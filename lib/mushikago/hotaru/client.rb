@@ -114,6 +114,28 @@ module Mushikago
         send_request(request)
       end
 
+      # テキストを取得する 
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [String] text_id テキストID
+      # @param [Hash] options リクエストのオプション
+      # @option options [Boolean] :with_body trueを指定すると、response['body']でファイルの内容にアクセスすることができるようになります。
+      # @example
+      #   client.text_get 'sample_domain', 'text_id'
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def text_get domain_name, text_id, options={}
+        request = Hotaru::TextGetRequest.new(domain_name, text_id, options)
+        result = send_request(request)
+        if options[:with_body]
+          begin
+            uri = URI.parse(result['url'])
+            result['body'] = Net::HTTP.get(uri.host, uri.request_uri)
+          rescue
+          end
+        end
+        return result
+      end
+
       # 指定されたtextにふさわしいtagを返す
       #
       # @param [String] domain_name ドメイン名
