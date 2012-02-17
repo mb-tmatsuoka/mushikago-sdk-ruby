@@ -7,6 +7,7 @@ module Mushikago
       request_parameter :splitter
       request_parameter :description
       request_parameter :dictionary_ids do |v| [v].flatten.compact.join(',') end
+      request_parameter :tags do |v| [v].flatten.compact.join(',') end
 
       def initialize domain_name, splitter, options={}
         super(options)
@@ -14,6 +15,7 @@ module Mushikago
         self.splitter = splitter
         self.description = options[:description] if options.has_key?(:description)
         self.dictionary_ids = options[:dictionary_ids] if options.has_key?(:dictionary_ids)
+        self.tags = options[:tags] if options.has_key?(:tags)
       end
     end
   end

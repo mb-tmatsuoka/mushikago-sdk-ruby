@@ -24,6 +24,7 @@ module Mushikago
       # @param [Hash] options リクエストのオプション
       # @option options [String] :description ドメインの説明
       # @option options [String,Array] :dictionary_ids ユーザ辞書のID
+      # @option options [String,Array] :tags ドメイン内で使用するタグ
       # @example
       #   client.domain_create('sample_domain', '2gram')
       # @return [Mushikago::Http::Response] リクエストの結果
