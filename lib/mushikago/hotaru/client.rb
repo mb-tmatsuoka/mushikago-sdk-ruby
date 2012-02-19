@@ -92,6 +92,7 @@ module Mushikago
       # @param [String] domain_name ドメイン名
       # @param [String] text_id テキストID
       # @param [Hash] options リクエストのオプション
+      # @option options [String] :forcedelete textを強制的に削除する場合true
       # @example
       #   client.text_delete 'sample_domain', 'text_id'
       # @return [Mushikago::Http::Response] リクエストの結果
