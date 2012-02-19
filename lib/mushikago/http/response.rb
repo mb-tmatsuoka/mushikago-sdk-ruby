@@ -49,6 +49,13 @@ module Mushikago
       def []= key, value
         response[key] = value
       end
+
+      def to_s
+        {
+          '@meta' => meta,
+          '@response' => response
+        }.to_json
+      end
     end
   end
 end
