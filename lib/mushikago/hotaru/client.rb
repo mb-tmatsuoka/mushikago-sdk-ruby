@@ -198,7 +198,7 @@ module Mushikago
       # @example
       #   client.collocation_list('sample_domain')
       # @return [Mushikago::Http::Response] リクエストの結果
-      def collocation_delete domain_name, options={}
+      def collocation_list domain_name, options={}
         request = Hotaru::CollocationListRequest.new(domain_name, options)
         send_request(request)
       end
