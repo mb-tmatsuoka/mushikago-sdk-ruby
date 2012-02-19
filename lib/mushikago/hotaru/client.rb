@@ -163,7 +163,7 @@ module Mushikago
       #   client.classifier_judge
       # @return [Mushikago::Http::Response] リクエストの結果
       def classifier_judge domain_name, text, options={}
-        request = Hotaru::ClassifierJudge.new(domain_name, text, options)
+        request = Hotaru::ClassifierJudgeRequest.new(domain_name, text, options)
         send_request(request)
       end
 
