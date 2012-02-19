@@ -317,7 +317,7 @@ module Mushikago
       #   client.word_list 'sample_domain'
       # @return [Mushikago::Http::Response] リクエストの結果
       def word_list domain_name, options={}
-        request = Hotaru::WordListRequest.new(options)
+        request = Hotaru::WordListRequest.new(domain_name, options)
         send_request(request)
       end
 
