@@ -33,7 +33,9 @@ module Mushikago
         request.add_signature!(signer)
 
         # send request
-        session = Net::HTTP.new(request.host, request.port)
+        port = use_ssl ? 443 : 80
+        port = request.port unless request.port.nil?
+        session = Net::HTTP.new(request.host, port)
         session.use_ssl = use_ssl
         session.verify_mode = OpenSSL::SSL::VERIFY_NONE if use_ssl
         session.start do |http|
