@@ -5,7 +5,8 @@ describe Mushikago::Tombo::Client do
   before :all do
     @client = Mushikago::Tombo::Client.new(
       :api_key => ENV['MUSHIKAGO_API_KEY'],
-      :secret_key => ENV['MUSHIKAGO_SECRET_KEY']
+      :secret_key => ENV['MUSHIKAGO_SECRET_KEY'],
+      :use_ssl => false
     )
   end
 
@@ -45,7 +46,7 @@ describe Mushikago::Tombo::Client do
         }
       }
       create_http_mock(response.to_json)
-      @response = @client.capture('http://www.tombo.ne.jp/', :thumbnail=>1)
+      @response = @client.capture('http://api.mushikago.org/', :thumbnail=>1)
     end
 
     subject{ @response }

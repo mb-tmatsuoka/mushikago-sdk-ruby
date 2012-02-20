@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 require 'spec_helper'
 
-class TestRequest < Mushikago::Http::Request
+class TestRequest < Mushikago::Http::GetRequest
   include Mushikago::Auth::Signature
 end
 
 describe Mushikago::Auth::Signature do
   before do
     @request = TestRequest.new
-    @request.http_method = 'GET'
     @request.host = 'mushikago.org'
     @request.path = '/1/someapi.json'
     @request['api_key'] = 'api_key'

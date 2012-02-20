@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'spec_helper'
 
-class TestRequest < Mushikago::Http::Request
+class TestRequest < Mushikago::Http::GetRequest
   include Mushikago::Auth::Signature
 end
 

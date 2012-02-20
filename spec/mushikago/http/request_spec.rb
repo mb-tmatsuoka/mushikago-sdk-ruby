@@ -20,7 +20,6 @@ describe Mushikago::Http::Request do
 
   subject{ @request }
   
-  it{ should respond_to(:http_method) }
   it{ should respond_to(:host, :host=) }
   it{ should respond_to(:port, :port=) }
   it{ should respond_to(:path, :path=) }
@@ -29,9 +28,8 @@ describe Mushikago::Http::Request do
   it{ should respond_to(:[]=) }
   it{ should respond_to(:[]) }
 
-  its(:http_method){ should == 'GET' }
   its(:host){ should == 'tombo.ap-northeast-1.mushikago.org' }
-  its('port.to_i'){ should == 80 }
+  its(:port){ should be_nil }
   its(:path){ should == '/1/list.json' }
   its(:headers){ should be_a_kind_of(Hash) }
   it 'header["hoge"] should "fuga"' do subject.headers['hoge'].should == 'fuga' end
