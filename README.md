@@ -5,7 +5,7 @@ Mushikago SDK for Ruby.
 - **Author**:          Toru Matsuoka
 - **Copyright**:       2011
 - **License**:         Apache License, Version 2.0
-- **Latest Version**:  0.3.7
+- **Latest Version**:  0.4.0
 - **Release Date**:    January 27th 2012
 
 
@@ -111,6 +111,48 @@ Mushikago SDK for Rubyはgemを使ってインストールします。
       puts ret['url']
     end
 
+### hotaruを利用する
+
+以下のコードで[mitsubachi](http://www.mushikago.org/mitsubachi/)を利用することができます。
+
+    require 'mushikago'
+    
+    client = Mushikago::Mitsubachi::Client.new(:api_key => '<APIキー>', :secret_key => '<シークレットキー>')
+    
+    domain_name = 'sample_domain'
+    
+    # ドメイン作成
+    client.domain_create(domain_name, 'english', :tags => ['negative', 'positive'])
+    
+    # テキスト登録
+    client.text_put(domain_name, 'This is too bad.', ['negative'])
+    client.text_put(domain_name, 'This is very good.', ['positive'])
+    
+    # 登録されたテキストの学習が完了するまでsleep
+    sleep 1 until client.text_list(domain_name)['texts'].all?{|text| text['status'] == 'complete'}
+    
+    # クラス判定
+    result = client.classifier_judge(domain_name, 'good bye!')
+    puts result['tag']
+    # => positive
+    
+    # 共起グラフ作成
+    result = client.collocation_create(domain_name, ['negative', 'positive'])
+    collocation_id = result['collocation_id']
+    
+    # 共起グラフの作成が完了するまでsleep
+    sleep 1 until client.collocation_list(domain_name)['collocations'].all?{|col| col['status'] == 'error' || col['status'] == 'complete'}
+    
+    # 共起語取得
+    result = client.collocation_get(domain_name, collocation_id, 'This')
+    puts result['words']
+    # => [{"word"=>"bad", "score"=>4.4986811569504646},
+    #     {"word"=>"good", "score"=>4.4986811569504646},
+    #     {"word"=>"too", "score"=>4.4986811569504646},
+    #     {"word"=>"very", "score"=>4.4986811569504646},
+    #     {"word"=>"is", "score"=>3.3137419313374643}]
+
+
 #### APIキーとシークレットキーの設定方法
 
 APIキーとシークレットキーは以下の方法でも設定することができます。
@@ -151,6 +193,8 @@ $ export MUSHIKAGO_SECRET_KEY=&lt;シークレットキー&gt;
 変更履歴
 --------
 
+- **Feb.20.12**: 0.4.0 release
+  - 新サービス「hotaru」対応
 - **Feb.14.12**: 0.3.7 release
   - Multipartでアップロードするファイルの最後に改行が付与される件修正
 - **Jan.27.12**: 0.3.6 release
