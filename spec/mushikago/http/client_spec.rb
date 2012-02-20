@@ -33,7 +33,8 @@ describe Mushikago::Http::Client do
     before :all do
       request = TestRequest.new
       request.host = 'api.mushikago.org'
-      request.path = '/1/tombo/info'
+      request.port = 443
+      request.path = '/1/health/check'
       client = Mushikago::Http::Client.new
       @response = client.send_request(request)
     end

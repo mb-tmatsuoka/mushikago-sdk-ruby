@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 require 'net/http'
+require 'net/https'
 require 'json'
 module Mushikago
   module Http
@@ -32,7 +33,10 @@ module Mushikago
         request.add_signature!(signer)
 
         # send request
-        Net::HTTP.start(request.host, request.port, :use_ssl => use_ssl) do |http|
+        session = Net::HTTP.new(request.host, request.port)
+        session.use_ssl = use_ssl
+        session.verify_mode = OpenSSL::SSL::VERIFY_NONE if use_ssl
+        session.start do |http|
           http_request = request.to_http_request
           http_response = http.request(http_request)
           return Mushikago::Http::Response.new(JSON.parse(http_response.body))
