@@ -25,6 +25,7 @@ module Mushikago
       # @option options [Integer] :image_quality(80) 画像の品質(0-100)
       # @option options [Boolean] :thumbnail(0) サムネイル取得フラグ(false:取得しない,true:取得する)
       # @option options [String,Array] :tags タグ
+      # @option options [Integer] :delay_time キャプチャ取得までの遅延時間(0-20000)[ミリ秒]
       # @example
       #   client.capture('http://www.tombo.ne.jp/', :thumbnail => true, :tags => ['tombo', 'webservice'])
       # @return [Mushikago::Http::Response] リクエストの結果

@@ -11,6 +11,7 @@ module Mushikago
       request_parameter :thumbnail do |v| (v ? 1 : 0).to_s end
       request_parameter :tags do |v| [v].flatten.compact.join(',') end
       request_parameter :useragent
+      request_parameter :delay_time do |v| v.to_i.to_s end
 
       # @param [String] url キャプチャ対象のURL
       # @param [Hash] options リクエストのオプション
@@ -19,6 +20,7 @@ module Mushikago
       # @option options [Boolean] :thumbnail(0) サムネイル取得フラグ(false:取得しない,true:取得する)
       # @option options [String,Array] :tags タグ
       # @option options [String] :useragent ユーザエージェント
+      # @option options [Integer] :delay_time キャプチャまでの待ち時間
       def initialize url, options={}
         super(options)
         self.url = url
@@ -27,6 +29,7 @@ module Mushikago
         self.thumbnail = options[:thumbnail] if options.has_key?(:thumbnail)
         self.tags = options[:tags] if options.has_key?(:tags)
         self.useragent = options[:useragent] if options.has_key?(:useragent)
+        self.delay_time = options[:delay_time] if options.has_key?(:delay_time)
         @headers['Content-type'] = 'application/x-www-form-urlencoded; charset=utf-8'
       end
     end
