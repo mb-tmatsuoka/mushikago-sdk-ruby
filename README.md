@@ -193,6 +193,8 @@ $ export MUSHIKAGO_SECRET_KEY=&lt;シークレットキー&gt;
 変更履歴
 --------
 
+- **Feb.20.12**: 0.4.2 release
+  - tomboのcaptureオプション「delay_time」に対応
 - **Feb.20.12**: 0.4.0 release
   - 新サービス「hotaru」対応
 - **Feb.14.12**: 0.3.7 release
