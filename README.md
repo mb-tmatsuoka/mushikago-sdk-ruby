@@ -39,46 +39,6 @@ Mushikago SDK for Rubyはgemを使ってインストールします。
 使い方
 ------
 
-### tomboを利用する
-
-以下のコードで[tombo](http://www.tombo.ne.jp/)を利用することができます。
-
-    require 'mushikago'
-
-    client = Mushikago::Tombo::Client.new(:api_key => '<APIキー>', :secret_key => '<シークレットキー>')
-
-    ########
-    # Captureメソッド
-    ret = client.capture('http://www.tombo.ne.jp/', {:tags => ['service'], :thumbnail => true})
-    p ret.meta
-    p ret.response
-    # => {"message"=>"OK", "status"=>200} 
-    # => {"image_url"=>"http://img.tombo.ne.jp/tombo-sample/7e11d3fd-7865-4ab9-80fb-b0fc8f362614.jpg", ...
-
-    ########
-    # Capturesメソッド
-    ret = client.captures
-    p ret.meta
-    p ret.response
-    # => {"message"=>"OK", "status"=>200} 
-    # => {"total"=>134, "images"=>[{"image_id"=>"ea7998d3-f8b6-4505-ae22-fc986439c569", "thumbnail_size"=>5120, ....
-
-    ########
-    # deleteメソッド
-    ret = client.delete('xxxxxxxx')
-    p ret.meta
-    p ret.response
-    # => {"message"=>"OK", "status"=>200} 
-    # => {"id"=>"xxxxxxxx"}
-
-    ########
-    # infoメソッド
-    ret = client.info
-    p ret.meta
-    p ret.response
-    # => {"message"=>"OK", "status"=>200} 
-    # => {"disk_usage"=>25372565, "image_num"=>133, "api_count"=>499}
-
 ### mitsubachiを利用する
 
 以下のコードで[mitsubachi](http://www.mushikago.org/mitsubachi/)を利用することができます。
@@ -113,11 +73,11 @@ Mushikago SDK for Rubyはgemを使ってインストールします。
 
 ### hotaruを利用する
 
-以下のコードで[mitsubachi](http://www.mushikago.org/mitsubachi/)を利用することができます。
+以下のコードで[hotaru](http://www.mushikago.org/hotaru/)を利用することができます。
 
     require 'mushikago'
     
-    client = Mushikago::Mitsubachi::Client.new(:api_key => '<APIキー>', :secret_key => '<シークレットキー>')
+    client = Mushikago::Hotaru::Client.new(:api_key => '<APIキー>', :secret_key => '<シークレットキー>')
     
     domain_name = 'sample_domain'
     
