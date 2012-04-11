@@ -1,9 +1,9 @@
 # -*- coding : utf-8 -*-
 module Mushikago
   module Ponz
-    class DomainCreateRequest < Mushikago::Http::PostRequest
-      def path; '/1/ponz/domain/create' end
-      request_parameter :domain_name
+    class DomainCreateRequest < Mushikago::Http::PutRequest
+      def path; "/1/ponz/domains/#{domain_name}" end
+      attr_accessor :domain_name
       request_parameter :seed
       request_parameter :description
 
