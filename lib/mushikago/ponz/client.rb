@@ -23,6 +23,21 @@ module Mushikago
         request = Ponz::CreateDomainRequest.new(domain_name, seed, options)
         send_request(request)
       end
+      
+      # 解析リクエストを送信する
+      #
+      # @example
+      #   client.request_analysis('ec', 'http://shop.example.com/')
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [String] url 解析対象URL
+      # @param [Hash] options オプション
+      # @option options [String] :charset 解析対象ページ文字コード
+      # @option options [String] :tag 解析結果検索用タグ
+      def request_analysis domain_name, url, options={}
+        request = Ponz::RequestAnalysisRequest.new(domain_name, url, options)
+        send_request(request)
+      end
     end
   end
 end
