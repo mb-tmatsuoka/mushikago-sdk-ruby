@@ -19,7 +19,7 @@ module Mushikago
       # @param [String] seed 初期キーワード
       # @param [Hash] options オプション
       # @option options [String] :description ドメインの説明
-      def create_domain domain_name, seed, opts={}
+      def create_domain domain_name, seed, options={}
         request = Ponz::CreateDomainRequest.new(domain_name, seed, options)
         send_request(request)
       end
