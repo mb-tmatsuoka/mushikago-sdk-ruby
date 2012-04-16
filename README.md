@@ -173,4 +173,3 @@ $ export MUSHIKAGO_SECRET_KEY=&lt;シークレットキー&gt;
   - Mushikago SDK for Ruby新規作成
   - Tombo サポート
 
-
