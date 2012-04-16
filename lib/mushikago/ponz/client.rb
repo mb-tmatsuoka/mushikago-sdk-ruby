@@ -38,6 +38,19 @@ module Mushikago
         request = Ponz::RequestAnalysisRequest.new(domain_name, url, options)
         send_request(request)
       end
+      # 解析結果を取得する
+      #
+      # @example
+      #    client.get_analysis('ec', 'xxxxxx-xxxxxx-xxxxxx')
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [String] request_id 解析リクエストID
+      # @param [Hash] options リクエストのオプション
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def get_analysis domain_name, request_id, options={}
+        request = Ponz::GetAnalysisRequest.new(domain_name, request_id, options)
+        send_request(request)
+      end
     end
   end
 end
