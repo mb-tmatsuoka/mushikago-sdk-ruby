@@ -7,6 +7,7 @@ describe Mushikago::Ponz::CreateDomainRequest do
     it{ should be_kind_of(Mushikago::Http::PutRequest) }
     its(:domain_name){ should == 'domain_name' }
     its(:seed){ should == 'seed' }
+    its(:path){ should == '/1/ponz/domains/domain_name' }
   end
 
   context '.new("domain_name", "seed", :description => "description")' do
