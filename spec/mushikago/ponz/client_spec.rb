@@ -8,19 +8,16 @@ describe Mushikago::Ponz::Client do
   it{ should be_respond_to(:get_analysis) }
   it{ should be_respond_to(:get_queue_size) }
 
-  context 'create_domain' do
-    it 'が呼ばれたとき、Mushikago::Ponz::CreateDomainRequestのインスタンスが生成され、send_requestに渡される' do
-      client, mock = create_client_and_request_mock
-      Mushikago::Ponz::CreateDomainRequest.should_receive(:new).with('domain_name', 'seed', {}).and_return(mock)
-      client.create_domain('domain_name', 'seed')
-    end
-  end
-
-  context 'get_queue_size' do
-    it 'が呼ばれたとき、Mushikago::Ponz::GetQueueSizeRequestのインスタンスが生成され、send_requestに渡される' do
-      client, mock = create_client_and_request_mock
-      Mushikago::Ponz::GetQueueSizeRequest.should_receive(:new).with('domain_name', {}).and_return(mock)
-      client.get_queue_size('domain_name')
+  [
+    ['create_domain', Mushikago::Ponz::CreateDomainRequest, ['domain_name', 'seed']],
+    ['get_queue_size', Mushikago::Ponz::GetQueueSizeRequest, ['domain_name']],
+  ].each do |method_name, clazz, args|
+    context method_name do
+      it "が呼ばれたとき、#{clazz}のインスタンスが生成され、send_requestに渡される" do
+        client, mock = create_client_and_request_mock
+        clazz.should_receive(:new).with(*args, {}).and_return(mock)
+        client.send(method_name, *args)
+      end
     end
   end
 
