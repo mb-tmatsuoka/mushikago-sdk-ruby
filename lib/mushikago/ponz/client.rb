@@ -38,6 +38,7 @@ module Mushikago
         request = Ponz::RequestAnalysisRequest.new(domain_name, url, options)
         send_request(request)
       end
+
       # 解析結果を取得する
       #
       # @example
@@ -49,6 +50,20 @@ module Mushikago
       # @return [Mushikago::Http::Response] リクエストの結果
       def get_analysis domain_name, request_id, options={}
         request = Ponz::GetAnalysisRequest.new(domain_name, request_id, options)
+        send_request(request)
+      end
+
+      # ドメイン内の残タスク数を取得する
+      #
+      # @example
+      #    ret = client.get_queue_size('ec')
+      #    puts ret['queue_size']
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [Hash] options リクエストのオプション
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def get_queue_size domain_name, options={}
+        request = Ponz::GetQueueSizeRequest.new(domain_name, options)
         send_request(request)
       end
     end
