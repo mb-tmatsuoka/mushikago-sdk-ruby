@@ -1,9 +1,8 @@
 # -*- coding : utf-8 -*-
 require 'spec_helper'
 describe Mushikago::Ponz::GetInformationRequest do
-  
   domain_name = 'domain_name'
-  path = "/1/ponz/#{domain_name}"
+  path = "/1/ponz/domains/#{domain_name}"
   
   context 'のインスタンス' do
     subject{ Mushikago::Ponz::GetInformationRequest.new(domain_name)}
