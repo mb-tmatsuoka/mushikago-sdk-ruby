@@ -66,6 +66,19 @@ module Mushikago
         request = Ponz::GetQueueSizeRequest.new(domain_name, options)
         send_request(request)
       end
+
+      # ドメインの情報を取得する
+      #
+      # @example
+      #    client.get_information('ec')
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [Hash] options リクエストのオプション
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def get_information domain_name, options={}
+        request = Ponz::GetInformationRequest.new(domain_name, options)
+        send_request(request)
+      end
     end
   end
 end

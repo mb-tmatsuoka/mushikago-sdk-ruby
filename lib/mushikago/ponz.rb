@@ -7,6 +7,7 @@ module Mushikago
     autoload :RequestAnalysisRequest, 'mushikago/ponz/request_analysis_request'
     autoload :GetAnalysisRequest, 'mushikago/ponz/get_analysis_request'
     autoload :GetQueueSizeRequest, 'mushikago/ponz/get_queue_size_request'
+    autoload :GetInformationRequest, 'mushikago/ponz/get_information_request'
   end
 end
 
