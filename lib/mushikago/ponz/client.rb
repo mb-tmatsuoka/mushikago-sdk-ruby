@@ -24,6 +24,19 @@ module Mushikago
         send_request(request)
       end
       
+      # ドメインを削除する
+      #
+      # @example
+      #   client.delete_domain('ec')
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [Hash] options オプション
+      # @option options [String] :description ドメインの説明
+      def delete_domain domain_name, options={}
+        request = Ponz::DeleteDomainRequest.new(domain_name, options)
+        send_request(request)
+      end
+      
       # 解析リクエストを送信する
       #
       # @example

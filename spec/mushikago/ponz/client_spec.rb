@@ -4,6 +4,7 @@ require 'spec_helper'
 describe Mushikago::Ponz::Client do
   subject{ Mushikago::Ponz::Client.new }
   it{ should be_respond_to(:create_domain) }
+  it{ should be_respond_to(:delete_domain) }
   it{ should be_respond_to(:request_analysis) }
   it{ should be_respond_to(:get_analysis) }
   it{ should be_respond_to(:get_queue_size) }
@@ -12,6 +13,7 @@ describe Mushikago::Ponz::Client do
 
   [
     [:create_domain, Mushikago::Ponz::CreateDomainRequest, ['domain_name', 'seed', {}]],
+    [:delete_domain, Mushikago::Ponz::DeleteDomainRequest, ['domain_name', {}]],
     [:request_analysis, Mushikago::Ponz::RequestAnalysisRequest, ['domain_name', 'url', {}]],
     [:get_analysis, Mushikago::Ponz::GetAnalysisRequest, ['domain_name', 'request_id', {}]],
     [:get_queue_size, Mushikago::Ponz::GetQueueSizeRequest, ['domain_name', {}]],
