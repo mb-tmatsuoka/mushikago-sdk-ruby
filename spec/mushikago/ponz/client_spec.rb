@@ -10,16 +10,16 @@ describe Mushikago::Ponz::Client do
   it{ should be_respond_to(:get_information) }
 
   [
-    [:create_domain, Mushikago::Ponz::CreateDomainRequest, ['domain_name', 'seed']],
-    [:request_analysis, Mushikago::Ponz::RequestAnalysisRequest, ['domain_name', 'url']],
-    [:get_analysis, Mushikago::Ponz::GetAnalysisRequest, ['domain_name', 'request_id']],
-    [:get_queue_size, Mushikago::Ponz::GetQueueSizeRequest, ['domain_name']],
-    [:get_information, Mushikago::Ponz::GetInformationRequest, ['domain_name']],
+    [:create_domain, Mushikago::Ponz::CreateDomainRequest, ['domain_name', 'seed', {}]],
+    [:request_analysis, Mushikago::Ponz::RequestAnalysisRequest, ['domain_name', 'url', {}]],
+    [:get_analysis, Mushikago::Ponz::GetAnalysisRequest, ['domain_name', 'request_id', {}]],
+    [:get_queue_size, Mushikago::Ponz::GetQueueSizeRequest, ['domain_name', {}]],
+    [:get_information, Mushikago::Ponz::GetInformationRequest, ['domain_name', {}]],
   ].each do |method_name, clazz, args|
     context method_name do
       it "が呼ばれたとき、#{clazz}のインスタンスが生成され、send_requestに渡される" do
         client, mock = create_client_and_request_mock
-        clazz.should_receive(:new).with(*args, {}).and_return(mock)
+        clazz.should_receive(:new).with(*args).and_return(mock)
         client.send(method_name, *args)
       end
     end
