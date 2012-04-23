@@ -90,7 +90,7 @@ module Mushikago
       # @option options [Integer] : offset 開始位置
       # @option options [String] : filter 検索文字（先頭一致）
       # @return [Mushikago::Http::Response] リクエストの結果
-      def get_information options={}
+      def get_domain_list options={}
         request = Ponz::GetDomainListRequest.new(options)
         send_request(request)
       end
