@@ -1,7 +1,7 @@
 # -*- coding : utf-8 -*-
 module Mushikago
   module Ponz
-    class GetDomainListRequest < Mushikago::Http::GetRequest
+    class GetListDomainsRequest < Mushikago::Http::GetRequest
       def path; "/1/ponz/domains" end
       request_parameter :limit
       request_parameter :offset

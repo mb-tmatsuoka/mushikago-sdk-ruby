@@ -9,7 +9,7 @@ module Mushikago
     autoload :GetAnalysisRequest, 'mushikago/ponz/get_analysis_request'
     autoload :GetQueueSizeRequest, 'mushikago/ponz/get_queue_size_request'
     autoload :GetInformationRequest, 'mushikago/ponz/get_information_request'
-    autoload :GetDomainListRequest, 'mushikago/ponz/get_domain_list_request'
+    autoload :GetListDomainsRequest, 'mushikago/ponz/get_list_domains_request'
   end
 end
 

@@ -96,15 +96,15 @@ module Mushikago
       # ドメインの一覧を取得する
       #
       # @example
-      #    client.get_domain_list(20, 10, 'ec')
+      #    client.get_list_domains(20, 10, 'ec')
       #
       # @param [Hash] options リクエストのオプション
       # @option options [Integer] : limit 最大取得件数
       # @option options [Integer] : offset 開始位置
       # @option options [String] : filter 検索文字（先頭一致）
       # @return [Mushikago::Http::Response] リクエストの結果
-      def get_domain_list options={}
-        request = Ponz::GetDomainListRequest.new(options)
+      def get_list_domains options={}
+        request = Ponz::GetListDomainsRequest.new(options)
         send_request(request)
       end
     end
