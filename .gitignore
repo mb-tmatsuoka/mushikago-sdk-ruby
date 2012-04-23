@@ -3,3 +3,4 @@ doc
 mushikago-sdk*.gem
 Gemfile.lock
 .project
+spec/reports/
