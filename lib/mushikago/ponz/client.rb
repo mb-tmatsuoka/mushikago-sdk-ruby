@@ -32,7 +32,7 @@ module Mushikago
       # @param [String] domain_name ドメイン名
       # @param [Hash] options オプション
       # @option options [String] :description ドメインの説明
-      def create_domain domain_name, options={}
+      def delete_domain domain_name, options={}
         request = Ponz::DeleteDomainRequest.new(domain_name, options)
         send_request(request)
       end
