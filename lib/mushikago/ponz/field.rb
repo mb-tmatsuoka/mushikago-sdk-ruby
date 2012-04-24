@@ -11,8 +11,8 @@ module Mushikago
         !!required
       end
 
-      def to_json
-        {:name => name.to_s, :required => required?, :type => type}.to_json
+      def to_json *args
+        {:name => name.to_s, :required => required?, :type => type}.to_json(args)
       end
     end
   end
