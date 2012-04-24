@@ -10,6 +10,8 @@ module Mushikago
     autoload :GetQueueSizeRequest, 'mushikago/ponz/get_queue_size_request'
     autoload :GetInformationRequest, 'mushikago/ponz/get_information_request'
     autoload :GetListDomainsRequest, 'mushikago/ponz/get_list_domains_request'
+
+    autoload :Field, 'mushikago/ponz/field'
   end
 end
 
