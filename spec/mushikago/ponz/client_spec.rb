@@ -12,7 +12,7 @@ describe Mushikago::Ponz::Client do
   it{ should be_respond_to(:get_list_domains) }
 
   [
-    [:create_domain, Mushikago::Ponz::CreateDomainRequest, ['domain_name', 'seed', {}]],
+    [:create_domain, Mushikago::Ponz::CreateDomainRequest, ['domain_name', 'seed', Mushikago::Ponz::Schema.new, {}]],
     [:delete_domain, Mushikago::Ponz::DeleteDomainRequest, ['domain_name', {}]],
     [:request_analysis, Mushikago::Ponz::RequestAnalysisRequest, ['domain_name', 'url', {}]],
     [:get_analysis, Mushikago::Ponz::GetAnalysisRequest, ['domain_name', 'request_id', {}]],

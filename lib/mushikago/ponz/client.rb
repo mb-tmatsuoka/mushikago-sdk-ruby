@@ -13,14 +13,20 @@ module Mushikago
       # ドメインを新規作成する
       #
       # @example
-      #   client.create_domain('ec', '税込')
+      #   schema = Mushikago::Ponz::Schema.new do
+      #     add Mushikago::Ponz::Field.new('name', true, :string)
+      #     add Mushikago::Ponz::Field.new('price', true, :number)
+      #     add {:name => 'shipping', :required => true, :type => :number} # <= Hashでも追加できます
+      #   end
+      #   client.create_domain('ec', '税込', schema)
       #
       # @param [String] domain_name ドメイン名
       # @param [String] seed 初期キーワード
+      # @param [String] schema 初期キーワード
       # @param [Hash] options オプション
       # @option options [String] :description ドメインの説明
-      def create_domain domain_name, seed, options={}
-        request = Ponz::CreateDomainRequest.new(domain_name, seed, options)
+      def create_domain domain_name, seed, schema, options={}
+        request = Ponz::CreateDomainRequest.new(domain_name, seed, schema, options)
         send_request(request)
       end
       
