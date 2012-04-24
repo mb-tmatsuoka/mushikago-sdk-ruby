@@ -22,7 +22,7 @@ module Mushikago
       #
       # @param [String] domain_name ドメイン名
       # @param [String] seed 初期キーワード
-      # @param [String] schema 初期キーワード
+      # @param [String] schema スキーマ
       # @param [Hash] options オプション
       # @option options [String] :description ドメインの説明
       def create_domain domain_name, seed, schema, options={}
