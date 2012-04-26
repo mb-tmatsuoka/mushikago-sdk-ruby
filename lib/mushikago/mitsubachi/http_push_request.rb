@@ -2,7 +2,7 @@
 module Mushikago
   module Mitsubachi
     class HttpPushRequest < Mushikago::Http::PostRequest
-      def path; '/1/mitsubachi/http/fetch.json' end
+      def path; '/1/mitsubachi/http/push' end
       request_parameter :url
       request_parameter :project_name
       request_parameter :script_name
