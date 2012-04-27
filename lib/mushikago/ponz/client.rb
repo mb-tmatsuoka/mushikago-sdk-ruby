@@ -113,6 +113,20 @@ module Mushikago
         request = Ponz::GetListDomainsRequest.new(options)
         send_request(request)
       end
+
+      # ドメインの情報を更新する
+      #
+      # @example
+      #    client.update_domain('ec', 'updateDescription')
+      #
+      # @param [Hash] options リクエストのオプション
+      # @option options [String] : domain_name ドメイン名
+      # @option options [String] : description ドメインの説明文
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def update_domain domain_name, description, options={}
+        request = Ponz::UpdateDomainRequest.new(domain_name, description, options)
+        send_request(request)
+      end
     end
   end
 end

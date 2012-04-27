@@ -10,6 +10,7 @@ describe Mushikago::Ponz::Client do
   it{ should be_respond_to(:get_queue_size) }
   it{ should be_respond_to(:get_information) }
   it{ should be_respond_to(:get_list_domains) }
+  it{ should be_respond_to(:update_domain) }
 
   [
     [:create_domain, Mushikago::Ponz::CreateDomainRequest, ['domain_name', 'seed', Mushikago::Ponz::Schema.new, {}]],
@@ -19,6 +20,7 @@ describe Mushikago::Ponz::Client do
     [:get_queue_size, Mushikago::Ponz::GetQueueSizeRequest, ['domain_name', {}]],
     [:get_information, Mushikago::Ponz::GetInformationRequest, ['domain_name', {}]],
     [:get_list_domains, Mushikago::Ponz::GetListDomainsRequest, [{}]],
+    [:update_domain, Mushikago::Ponz::UpdateDomainRequest, ['domain_name', 'description', {}]],
   ].each do |method_name, clazz, args|
     context method_name do
       it "が呼ばれたとき、#{clazz}のインスタンスが生成され、send_requestに渡される" do
