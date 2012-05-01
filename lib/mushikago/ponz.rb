@@ -11,6 +11,7 @@ module Mushikago
     autoload :GetInformationRequest, 'mushikago/ponz/get_information_request'
     autoload :GetListDomainsRequest, 'mushikago/ponz/get_list_domains_request'
     autoload :UpdateDomainRequest, 'mushikago/ponz/update_domain_request'
+    autoload :GetListAnalysisesRequest, 'mushikago/ponz/get_list_analysises_request'
 
     autoload :Schema, 'mushikago/ponz/schema'
     autoload :Field, 'mushikago/ponz/field'

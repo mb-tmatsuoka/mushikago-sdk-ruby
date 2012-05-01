@@ -127,6 +127,22 @@ module Mushikago
         request = Ponz::UpdateDomainRequest.new(domain_name, description, options)
         send_request(request)
       end
+
+      # 解析結果の一覧を取得する
+      #
+      # @example
+      #    client.get_list_analysises('ec', {:limit => '20', :offset => '5', :status => 'complete'})
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [Hash] options リクエストのオプション
+      # @option options [Integer] : limit 最大取得件数
+      # @option options [Integer] : offset 開始位置
+      # @option options [String] : status 解析の状態
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def get_list_analysises domain_name, options={}
+        request = Ponz::GetListAnalysisesRequest.new(domain_name, options)
+        send_request(request)
+      end
     end
   end
 end
