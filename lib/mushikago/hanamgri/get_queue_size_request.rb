@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 module Mushikago
-  module Ponz
+  module Hanamgri
     class GetQueueSizeRequest < Mushikago::Http::GetRequest
-      def path; "/1/ponz/domains/#{domain_name}/queues" end
+      def path; "/1/hanamgri/domains/#{domain_name}/queues" end
       attr_accessor :domain_name
       
       def initialize domain_name, options={}

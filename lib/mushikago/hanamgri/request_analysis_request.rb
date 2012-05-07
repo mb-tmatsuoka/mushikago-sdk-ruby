@@ -1,8 +1,8 @@
 # -*- coding : utf-8 -*-
 module Mushikago
-  module Ponz
+  module Hanamgri
     class RequestAnalysisRequest < Mushikago::Http::PutRequest
-      def path; "/1/ponz/domains/#{domain_name}/analysis" end
+      def path; "/1/hanamgri/domains/#{domain_name}/analysis" end
       attr_accessor :domain_name
       request_parameter :url
       request_parameter :charset

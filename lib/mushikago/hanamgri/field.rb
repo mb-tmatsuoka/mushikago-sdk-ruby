@@ -1,7 +1,7 @@
 # -*- coding : utf-8 -*-
 require 'json'
 module Mushikago
-  module Ponz
+  module Hanamgri
     class Field < Struct.new(:name, :required, :type)
       def validate!
         raise "Invalid Type Value [#{type}]" unless [:string, :number].include?(type)
