@@ -1,11 +1,11 @@
 # -*- coding : utf-8 -*-
 require 'spec_helper'
 
-describe Mushikago::Ponz::UpdateDomainRequest do
+describe Mushikago::Hanamgri::UpdateDomainRequest do
   shared_examples_for ' a valid request instance for update_domain' do |n, d, o|
-    subject{ Mushikago::Ponz::UpdateDomainRequest.new(n, d, o) }
+    subject{ Mushikago::Hanamgri::UpdateDomainRequest.new(n, d, o) }
     it{ should be_kind_of(Mushikago::Http::PostRequest) }
-    its(:path){ should == "/1/ponz/domains/#{n}" }
+    its(:path){ should == "/1/hanamgri/domains/#{n}" }
     its(:domain_name){ should == n }
     its(:description){ should == d }
   end

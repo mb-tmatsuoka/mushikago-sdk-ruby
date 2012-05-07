@@ -1,8 +1,8 @@
 # -*- coding : utf-8 -*-
 require 'spec_helper'
 
-describe Mushikago::Ponz::Client do
-  subject{ Mushikago::Ponz::Client.new }
+describe Mushikago::Hanamgri::Client do
+  subject{ Mushikago::Hanamgri::Client.new }
   it{ should be_respond_to(:create_domain) }
   it{ should be_respond_to(:delete_domain) }
   it{ should be_respond_to(:request_analysis) }
@@ -14,15 +14,15 @@ describe Mushikago::Ponz::Client do
   it{ should be_respond_to(:get_list_analysises) }
 
   [
-    [:create_domain, Mushikago::Ponz::CreateDomainRequest, ['domain_name', 'seed', Mushikago::Ponz::Schema.new, {}]],
-    [:delete_domain, Mushikago::Ponz::DeleteDomainRequest, ['domain_name', {}]],
-    [:request_analysis, Mushikago::Ponz::RequestAnalysisRequest, ['domain_name', 'url', {}]],
-    [:get_analysis, Mushikago::Ponz::GetAnalysisRequest, ['domain_name', 'request_id', {}]],
-    [:get_queue_size, Mushikago::Ponz::GetQueueSizeRequest, ['domain_name', {}]],
-    [:get_information, Mushikago::Ponz::GetInformationRequest, ['domain_name', {}]],
-    [:get_list_domains, Mushikago::Ponz::GetListDomainsRequest, [{}]],
-    [:update_domain, Mushikago::Ponz::UpdateDomainRequest, ['domain_name', 'description', {}]],
-    [:get_list_analysises, Mushikago::Ponz::GetListAnalysisesRequest, ['domain_name', {:limit => 20, :offset => 5, :status => 'complete'}]],
+    [:create_domain, Mushikago::Hanamgri::CreateDomainRequest, ['domain_name', 'seed', Mushikago::Hanamgri::Schema.new, {}]],
+    [:delete_domain, Mushikago::Hanamgri::DeleteDomainRequest, ['domain_name', {}]],
+    [:request_analysis, Mushikago::Hanamgri::RequestAnalysisRequest, ['domain_name', 'url', {}]],
+    [:get_analysis, Mushikago::Hanamgri::GetAnalysisRequest, ['domain_name', 'request_id', {}]],
+    [:get_queue_size, Mushikago::Hanamgri::GetQueueSizeRequest, ['domain_name', {}]],
+    [:get_information, Mushikago::Hanamgri::GetInformationRequest, ['domain_name', {}]],
+    [:get_list_domains, Mushikago::Hanamgri::GetListDomainsRequest, [{}]],
+    [:update_domain, Mushikago::Hanamgri::UpdateDomainRequest, ['domain_name', 'description', {}]],
+    [:get_list_analysises, Mushikago::Hanamgri::GetListAnalysisesRequest, ['domain_name', {:limit => 20, :offset => 5, :status => 'complete'}]],
   ].each do |method_name, clazz, args|
     context method_name do
       it "が呼ばれたとき、#{clazz}のインスタンスが生成され、send_requestに渡される" do
@@ -37,7 +37,7 @@ describe Mushikago::Ponz::Client do
   # define helpers 
   def create_client_and_request_mock
     request_mock = Object.new
-    client = Mushikago::Ponz::Client.new
+    client = Mushikago::Hanamgri::Client.new
     client.should_receive(:send_request).with(request_mock)
     return [client, request_mock]
   end

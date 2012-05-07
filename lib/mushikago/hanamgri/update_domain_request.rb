@@ -1,8 +1,8 @@
 # -*- coding : utf-8 -*-
 module Mushikago
-  module Ponz
+  module Hanamgri
     class UpdateDomainRequest < Mushikago::Http::PostRequest
-      def path; "/1/ponz/domains/#{domain_name}" end
+      def path; "/1/hanamgri/domains/#{domain_name}" end
       attr_accessor :domain_name
       attr_accessor :description
 

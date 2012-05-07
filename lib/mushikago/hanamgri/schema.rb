@@ -1,7 +1,7 @@
 # -*- coding : utf-8 -*-
 require 'json'
 module Mushikago
-  module Ponz
+  module Hanamgri
     class Schema
       attr_reader :fields
       
@@ -13,7 +13,7 @@ module Mushikago
       def add field_or_hash
         field = field_or_hash
         if field.kind_of?(Hash)
-          field = Mushikago::Ponz::Field.new(field[:name], field[:required], field[:type])
+          field = Mushikago::Hanamgri::Field.new(field[:name], field[:required], field[:type])
         end
         field.validate!
         @fields << field

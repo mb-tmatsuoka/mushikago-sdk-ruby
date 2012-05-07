@@ -1,21 +1,21 @@
 # -*- coding : utf-8 -*-
 module Mushikago
-  module Ponz
-    # Ponzサービスを利用する
+  module Hanamgri
+    # Hanamgriサービスを利用する
     #
     # @example
-    #   client = Mushikago::Ponz::Client.new(:api_key => '<api_key>', :secret_key => '<secret_key>')
+    #   client = Mushikago::Hanamgri::Client.new(:api_key => '<api_key>', :secret_key => '<secret_key>')
     #
     # @example APIキーをファイルから読み込む場合
     #   Mushikago.config.load(YAML.load(File.read('config.yml')))
-    #   client = Mushikago::Ponz::Client.new
+    #   client = Mushikago::Hanamgri::Client.new
     class Client < Mushikago::Http::Client
       # ドメインを新規作成する
       #
       # @example
-      #   schema = Mushikago::Ponz::Schema.new do
-      #     add Mushikago::Ponz::Field.new('name', true, :string)
-      #     add Mushikago::Ponz::Field.new('price', true, :number)
+      #   schema = Mushikago::Hanamgri::Schema.new do
+      #     add Mushikago::Hanamgri::Field.new('name', true, :string)
+      #     add Mushikago::Hanamgri::Field.new('price', true, :number)
       #     add {:name => 'shipping', :required => true, :type => :number} # <= Hashでも追加できます
       #   end
       #   client.create_domain('ec', '税込', schema)
@@ -26,7 +26,7 @@ module Mushikago
       # @param [Hash] options オプション
       # @option options [String] :description ドメインの説明
       def create_domain domain_name, seed, schema, options={}
-        request = Ponz::CreateDomainRequest.new(domain_name, seed, schema, options)
+        request = Hanamgri::CreateDomainRequest.new(domain_name, seed, schema, options)
         send_request(request)
       end
       
@@ -39,7 +39,7 @@ module Mushikago
       # @param [Hash] options オプション
       # @option options [String] :description ドメインの説明
       def delete_domain domain_name, options={}
-        request = Ponz::DeleteDomainRequest.new(domain_name, options)
+        request = Hanamgri::DeleteDomainRequest.new(domain_name, options)
         send_request(request)
       end
       
@@ -54,7 +54,7 @@ module Mushikago
       # @option options [String] :charset 解析対象ページ文字コード
       # @option options [String] :tag 解析結果検索用タグ
       def request_analysis domain_name, url, options={}
-        request = Ponz::RequestAnalysisRequest.new(domain_name, url, options)
+        request = Hanamgri::RequestAnalysisRequest.new(domain_name, url, options)
         send_request(request)
       end
 
@@ -68,7 +68,7 @@ module Mushikago
       # @param [Hash] options リクエストのオプション
       # @return [Mushikago::Http::Response] リクエストの結果
       def get_analysis domain_name, request_id, options={}
-        request = Ponz::GetAnalysisRequest.new(domain_name, request_id, options)
+        request = Hanamgri::GetAnalysisRequest.new(domain_name, request_id, options)
         send_request(request)
       end
 
@@ -82,7 +82,7 @@ module Mushikago
       # @param [Hash] options リクエストのオプション
       # @return [Mushikago::Http::Response] リクエストの結果
       def get_queue_size domain_name, options={}
-        request = Ponz::GetQueueSizeRequest.new(domain_name, options)
+        request = Hanamgri::GetQueueSizeRequest.new(domain_name, options)
         send_request(request)
       end
 
@@ -95,7 +95,7 @@ module Mushikago
       # @param [Hash] options リクエストのオプション
       # @return [Mushikago::Http::Response] リクエストの結果
       def get_information domain_name, options={}
-        request = Ponz::GetInformationRequest.new(domain_name, options)
+        request = Hanamgri::GetInformationRequest.new(domain_name, options)
         send_request(request)
       end
 
@@ -110,7 +110,7 @@ module Mushikago
       # @option options [String] : filter 検索文字（先頭一致）
       # @return [Mushikago::Http::Response] リクエストの結果
       def get_list_domains options={}
-        request = Ponz::GetListDomainsRequest.new(options)
+        request = Hanamgri::GetListDomainsRequest.new(options)
         send_request(request)
       end
 
@@ -124,7 +124,7 @@ module Mushikago
       # @option options [String] : description ドメインの説明文
       # @return [Mushikago::Http::Response] リクエストの結果
       def update_domain domain_name, description, options={}
-        request = Ponz::UpdateDomainRequest.new(domain_name, description, options)
+        request = Hanamgri::UpdateDomainRequest.new(domain_name, description, options)
         send_request(request)
       end
 
@@ -140,7 +140,7 @@ module Mushikago
       # @option options [String] : status 解析の状態
       # @return [Mushikago::Http::Response] リクエストの結果
       def get_list_analysises domain_name, options={}
-        request = Ponz::GetListAnalysisesRequest.new(domain_name, options)
+        request = Hanamgri::GetListAnalysisesRequest.new(domain_name, options)
         send_request(request)
       end
     end

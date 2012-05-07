@@ -1,20 +1,20 @@
 # -*- coding : utf-8 -*-
 require 'spec_helper'
 
-describe Mushikago::Ponz::CreateDomainRequest do
+describe Mushikago::Hanamgri::CreateDomainRequest do
   before :all do
-    @schema = Mushikago::Ponz::Schema.new do
-      add Mushikago::Ponz::Field.new('name', true, :string)
-      add Mushikago::Ponz::Field.new('price', true, :number)
-      add Mushikago::Ponz::Field.new('shipping', false, :string)
-      add Mushikago::Ponz::Field.new('description', false, :string)
+    @schema = Mushikago::Hanamgri::Schema.new do
+      add Mushikago::Hanamgri::Field.new('name', true, :string)
+      add Mushikago::Hanamgri::Field.new('price', true, :number)
+      add Mushikago::Hanamgri::Field.new('shipping', false, :string)
+      add Mushikago::Hanamgri::Field.new('description', false, :string)
     end
   end
 
   shared_examples_for 'a valid request instance' do |n, s, o|
-    subject{ Mushikago::Ponz::CreateDomainRequest.new(n, s, @schema, o) }
+    subject{ Mushikago::Hanamgri::CreateDomainRequest.new(n, s, @schema, o) }
     it{ should be_kind_of(Mushikago::Http::PutRequest) }
-    its(:path){ should == "/1/ponz/domains/#{n}" }
+    its(:path){ should == "/1/hanamgri/domains/#{n}" }
     its(:domain_name){ should == n }
     its(:seed){ should == s }
     its(:schema){ should == @schema.to_json }
