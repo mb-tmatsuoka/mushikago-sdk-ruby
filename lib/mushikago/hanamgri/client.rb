@@ -137,6 +137,7 @@ module Mushikago
       # @param [Hash] options リクエストのオプション
       # @option options [Integer] : limit 最大取得件数
       # @option options [Integer] : offset 開始位置
+      # @option options [String] : filter 検索文字
       # @option options [String] : status 解析の状態
       # @return [Mushikago::Http::Response] リクエストの結果
       def get_list_analysises domain_name, options={}

@@ -9,6 +9,7 @@ describe Mushikago::Hanamgri::GetListAnalysisesRequest do
     its(:domain_name){ should == n }
     its(:limit){ should == o[:limit] }
     its(:offset){ should == o[:offset] }
+    its(:filter){ should == o[:filter] }
     its(:status){ should == o[:status] }
   end
 

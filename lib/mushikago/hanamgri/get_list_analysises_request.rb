@@ -6,6 +6,7 @@ module Mushikago
       attr_accessor :domain_name
       request_parameter :limit
       request_parameter :offset
+      request_parameter :filter
       request_parameter :status
 
       def initialize domain_name, options={}
@@ -13,6 +14,7 @@ module Mushikago
         self.domain_name = domain_name
         self.limit = options[:limit] if options.has_key?(:limit)
         self.offset = options[:offset] if options.has_key?(:offset)
+        self.filter = options[:filter] if options.has_key?(:filter)
         self.status = options[:status] if options.has_key?(:status)
       end
     end
