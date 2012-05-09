@@ -131,7 +131,7 @@ module Mushikago
       # 解析結果の一覧を取得する
       #
       # @example
-      #    client.get_list_analysises('ec', {:limit => '20', :offset => '5', :status => 'complete'})
+      #    client.get_list_analyses('ec', {:limit => '20', :offset => '5', :status => 'complete'})
       #
       # @param [String] domain_name ドメイン名
       # @param [Hash] options リクエストのオプション
@@ -140,8 +140,8 @@ module Mushikago
       # @option options [String] : filter 検索文字
       # @option options [String] : status 解析の状態
       # @return [Mushikago::Http::Response] リクエストの結果
-      def get_list_analysises domain_name, options={}
-        request = Hanamgri::GetListAnalysisesRequest.new(domain_name, options)
+      def get_list_analyses domain_name, options={}
+        request = Hanamgri::GetListAnalysesRequest.new(domain_name, options)
         send_request(request)
       end
     end

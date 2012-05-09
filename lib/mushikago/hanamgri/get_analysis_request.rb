@@ -2,7 +2,7 @@
 module Mushikago
   module Hanamgri
     class GetAnalysisRequest < Mushikago::Http::GetRequest
-      def path; "/1/hanamgri/domains/#{domain_name}/analysises/#{request_id}" end
+      def path; "/1/hanamgri/domains/#{domain_name}/analyses/#{request_id}" end
       attr_accessor :domain_name
       attr_accessor :request_id
       

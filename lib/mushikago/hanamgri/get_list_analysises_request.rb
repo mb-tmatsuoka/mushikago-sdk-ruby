@@ -1,8 +1,8 @@
 # -*- coding : utf-8 -*-
 module Mushikago
   module Hanamgri
-    class GetListAnalysisesRequest < Mushikago::Http::GetRequest
-      def path; "/1/hanamgri/domains/#{domain_name}/analysises" end
+    class GetListAnalysesRequest < Mushikago::Http::GetRequest
+      def path; "/1/hanamgri/domains/#{domain_name}/analyses" end
       attr_accessor :domain_name
       request_parameter :limit
       request_parameter :offset

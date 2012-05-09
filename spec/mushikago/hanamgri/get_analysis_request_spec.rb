@@ -7,6 +7,6 @@ describe Mushikago::Hanamgri::GetAnalysisRequest do
     it{ should be_kind_of(Mushikago::Http::GetRequest)}
     its(:domain_name){ should == 'domain_name'}
     its(:request_id){ should == 'request_id'}
-    its(:path){ should == '/1/hanamgri/domains/domain_name/analysises/request_id'}
+    its(:path){ should == '/1/hanamgri/domains/domain_name/analyses/request_id'}
   end
 end

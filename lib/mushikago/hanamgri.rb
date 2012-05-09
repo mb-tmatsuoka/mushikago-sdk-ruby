@@ -11,7 +11,7 @@ module Mushikago
     autoload :GetInformationRequest, 'mushikago/hanamgri/get_information_request'
     autoload :GetListDomainsRequest, 'mushikago/hanamgri/get_list_domains_request'
     autoload :UpdateDomainRequest, 'mushikago/hanamgri/update_domain_request'
-    autoload :GetListAnalysisesRequest, 'mushikago/hanamgri/get_list_analysises_request'
+    autoload :GetListAnalysesRequest, 'mushikago/hanamgri/get_list_analyses_request'
 
     autoload :Schema, 'mushikago/hanamgri/schema'
     autoload :Field, 'mushikago/hanamgri/field'
