@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe Mushikago::Hanamgri::GetListAnalysesRequest do
-  shared_examples_for 'a valid request instance for get_list_analyses' do |n, o|
+  shared_examples_for 'a valid request instance for list_analyses' do |n, o|
     subject{ Mushikago::Hanamgri::GetListAnalysesRequest.new(n, o) }
     it{ should be_kind_of(Mushikago::Http::GetRequest) }
     its(:path){ should == "/1/hanamgri/domains/#{n}/analyses" }
@@ -18,7 +18,7 @@ describe Mushikago::Hanamgri::GetListAnalysesRequest do
     ['name', {:limit => 20, :offset => 5, :status => 'complete'}],
   ].each do |n, o|
     context ".new(#{n}, #{o})" do
-      it_should_behave_like 'a valid request instance for get_list_analyses', n, o
+      it_should_behave_like 'a valid request instance for list_analyses', n, o
     end
   end
 end

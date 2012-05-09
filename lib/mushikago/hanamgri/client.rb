@@ -102,14 +102,14 @@ module Mushikago
       # ドメインの一覧を取得する
       #
       # @example
-      #    client.get_list_domains(20, 10, 'ec')
+      #    client.list_domains(20, 10, 'ec')
       #
       # @param [Hash] options リクエストのオプション
       # @option options [Integer] : limit 最大取得件数
       # @option options [Integer] : offset 開始位置
       # @option options [String] : filter 検索文字（先頭一致）
       # @return [Mushikago::Http::Response] リクエストの結果
-      def get_list_domains options={}
+      def list_domains options={}
         request = Hanamgri::GetListDomainsRequest.new(options)
         send_request(request)
       end
@@ -131,7 +131,7 @@ module Mushikago
       # 解析結果の一覧を取得する
       #
       # @example
-      #    client.get_list_analyses('ec', {:limit => '20', :offset => '5', :status => 'complete'})
+      #    client.list_analyses('ec', {:limit => '20', :offset => '5', :status => 'complete'})
       #
       # @param [String] domain_name ドメイン名
       # @param [Hash] options リクエストのオプション
@@ -140,7 +140,7 @@ module Mushikago
       # @option options [String] : filter 検索文字
       # @option options [String] : status 解析の状態
       # @return [Mushikago::Http::Response] リクエストの結果
-      def get_list_analyses domain_name, options={}
+      def list_analyses domain_name, options={}
         request = Hanamgri::GetListAnalysesRequest.new(domain_name, options)
         send_request(request)
       end

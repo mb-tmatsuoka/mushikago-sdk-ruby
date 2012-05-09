@@ -9,9 +9,9 @@ module Mushikago
     autoload :GetAnalysisRequest, 'mushikago/hanamgri/get_analysis_request'
     autoload :GetQueueSizeRequest, 'mushikago/hanamgri/get_queue_size_request'
     autoload :GetInformationRequest, 'mushikago/hanamgri/get_information_request'
-    autoload :GetListDomainsRequest, 'mushikago/hanamgri/get_list_domains_request'
+    autoload :GetListDomainsRequest, 'mushikago/hanamgri/list_domains_request'
     autoload :UpdateDomainRequest, 'mushikago/hanamgri/update_domain_request'
-    autoload :GetListAnalysesRequest, 'mushikago/hanamgri/get_list_analyses_request'
+    autoload :GetListAnalysesRequest, 'mushikago/hanamgri/list_analyses_request'
 
     autoload :Schema, 'mushikago/hanamgri/schema'
     autoload :Field, 'mushikago/hanamgri/field'
