@@ -13,9 +13,14 @@ module Mushikago
     autoload :UpdateDomainRequest, 'mushikago/hanamgri/update_domain_request'
     autoload :GetListAnalysesRequest, 'mushikago/hanamgri/list_analyses_request'
     autoload :SearchSchemaRequest, 'mushikago/hanamgri/search_schema_request'
-
+    autoload :TrainRequest, 'mushikago/hanamgri/train_request'
+    
     autoload :Schema, 'mushikago/hanamgri/schema'
     autoload :Field, 'mushikago/hanamgri/field'
+    
+    autoload :TrainingData, 'mushikago/hanamgri/training_data'
+    autoload :Element, 'mushikago/hanamgri/element'
+    
   end
 end
 
