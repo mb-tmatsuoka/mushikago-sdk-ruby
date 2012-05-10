@@ -144,6 +144,22 @@ module Mushikago
         request = Hanamgri::GetListAnalysesRequest.new(domain_name, options)
         send_request(request)
       end
+      
+      # 解析結果を検索する
+      #
+      # @example
+      #    client.search_schema('ec', 'name', 'something', {:limit => '20', :offset => '5'})
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [String] query_key 検索対象のフィールド名
+      # @param [String] query_value 検索対象のフィールド値
+      # @option options [Integer] : limit 最大取得件数
+      # @option options [Integer] : offset 開始位置
+      # @return [Mushikagp::Http::Response] リクエストの結果
+      def search_schema domain_name, query_key, query_value, options={}
+        request = Hanamgri::SearchSchemaRequest.new(domain_name, query_key, query_value, options)
+        send_request(request)
+      end
     end
   end
 end
