@@ -6,9 +6,9 @@ describe Mushikago::Hanamgri::SearchSchemaRequest do
     subject{ Mushikago::Hanamgri::SearchSchemaRequest.new(n, k, v, o)}
     it{ should be_kind_of(Mushikago::Http::GetRequest)}
     its(:path){ should == "/1/hanamgri/domains/#{n}/schema/search"}
-    its(:domain_name){ should = n }
-    its(:query_key){ should = k }
-    its(:query_value){ should = v }
+    its(:domain_name){ should == n }
+    its(:query_key){ should == k }
+    its(:query_value){ should == v }
   end
   
   test_parameters = [
