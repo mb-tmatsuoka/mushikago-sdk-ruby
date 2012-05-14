@@ -13,6 +13,7 @@ describe Mushikago::Hanamgri::Client do
   it{ should be_respond_to(:update_domain) }
   it{ should be_respond_to(:list_analyses) }
   it{ should be_respond_to(:search_schema) }
+  it{ should be_respond_to(:train) }
 
   [
     [:create_domain, Mushikago::Hanamgri::CreateDomainRequest, ['domain_name', 'seeds', Mushikago::Hanamgri::Schema.new, {}]],
@@ -25,6 +26,7 @@ describe Mushikago::Hanamgri::Client do
     [:update_domain, Mushikago::Hanamgri::UpdateDomainRequest, ['domain_name', 'description', {}]],
     [:list_analyses, Mushikago::Hanamgri::GetListAnalysesRequest, ['domain_name', {:limit => 20, :offset => 5, :status => 'complete'}]],
     [:search_schema, Mushikago::Hanamgri::SearchSchemaRequest, ['domain_name', 'query_key', 'query_value', {:limit => 20, :offset => 5}]],
+    [:train, Mushikago::Hanamgri::TrainRequest, ['domain_name', 'http://www.mushikago.org/', Mushikago::Hanamgri::TrainingData.new, {}]],
   ].each do |method_name, clazz, args|
     context method_name do
       it "が呼ばれたとき、#{clazz}のインスタンスが生成され、send_requestに渡される" do
