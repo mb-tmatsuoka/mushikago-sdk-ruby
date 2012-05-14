@@ -16,14 +16,14 @@ describe Mushikago::Hanamgri::CreateDomainRequest do
     it{ should be_kind_of(Mushikago::Http::PutRequest) }
     its(:path){ should == "/1/hanamgri/domains/#{n}" }
     its(:domain_name){ should == n }
-    its(:seed){ should == s }
+    its(:seeds){ should == s }
     its(:schema){ should == @schema.to_json }
     its(:description){ should == o[:description] }
   end
 
   test_parameters = [
-    ['domain_name', 'seed', {}],
-    ['name', 'seed', {:description => 'description'}],
+    ['domain_name', 'seeds', {}],
+    ['name', 'seeds', {:description => 'description'}],
   ].each do |n, s, o|
     context ".new(#{n}, #{s}, #{o})" do
       it_should_behave_like 'a valid request instance', n, s, o

@@ -21,12 +21,12 @@ module Mushikago
       #   client.create_domain('ec', '税込', schema)
       #
       # @param [String] domain_name ドメイン名
-      # @param [String] seed 初期キーワード
+      # @param [String] seeds 初期キーワード
       # @param [String] schema スキーマ
       # @param [Hash] options オプション
       # @option options [String] :description ドメインの説明
-      def create_domain domain_name, seed, schema, options={}
-        request = Hanamgri::CreateDomainRequest.new(domain_name, seed, schema, options)
+      def create_domain domain_name, seeds, schema, options={}
+        request = Hanamgri::CreateDomainRequest.new(domain_name, seeds, schema, options)
         send_request(request)
       end
       

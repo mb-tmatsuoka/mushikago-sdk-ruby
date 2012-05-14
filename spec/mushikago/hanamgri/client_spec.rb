@@ -15,7 +15,7 @@ describe Mushikago::Hanamgri::Client do
   it{ should be_respond_to(:search_schema) }
 
   [
-    [:create_domain, Mushikago::Hanamgri::CreateDomainRequest, ['domain_name', 'seed', Mushikago::Hanamgri::Schema.new, {}]],
+    [:create_domain, Mushikago::Hanamgri::CreateDomainRequest, ['domain_name', 'seeds', Mushikago::Hanamgri::Schema.new, {}]],
     [:delete_domain, Mushikago::Hanamgri::DeleteDomainRequest, ['domain_name', {}]],
     [:request_analysis, Mushikago::Hanamgri::RequestAnalysisRequest, ['domain_name', 'url', {}]],
     [:get_analysis, Mushikago::Hanamgri::GetAnalysisRequest, ['domain_name', 'request_id', {}]],

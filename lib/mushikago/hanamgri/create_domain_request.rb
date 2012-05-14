@@ -4,15 +4,15 @@ module Mushikago
     class CreateDomainRequest < Mushikago::Http::PutRequest
       def path; "/1/hanamgri/domains/#{domain_name}" end
       attr_accessor :domain_name
-      request_parameter :seed
+      request_parameter :seeds
       request_parameter :schema do |s| s.to_json end
       request_parameter :description
 
-      def initialize domain_name, seed, schema, options={}
+      def initialize domain_name, seeds, schema, options={}
         super(options)
         raise unless schema.kind_of? Mushikago::Hanamgri::Schema
         self.domain_name = domain_name
-        self.seed = seed
+        self.seeds = seeds
         self.schema = schema
         self.description = options[:description] if options.has_key?(:description)
       end
