@@ -160,6 +160,24 @@ module Mushikago
         request = Hanamgri::SearchSchemaRequest.new(domain_name, query_key, query_value, options)
         send_request(request)
       end
+
+      # 解析結果を検索する
+      #
+      # @example
+      #   training_data = Mushikago::Hanamgri::TrainingData.new do
+      #     add Mushikago::Hanamgri::Element.new('name', 'mushikago')
+      #     add {:key => 'name', :value => 'mushikago'} # <= Hashでも追加できます
+      #   end
+      #   client.train('ec', 'http://www.mushikago.org/', training_data)
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [String] url 学習対象のURL
+      # @param [String] training_data 学習データ
+      # @return [Mushikagp::Http::Response] リクエストの結果
+      def train domain_name, url, training_data, options={}
+        request = Hanamgri::TrainRequest.new(domain_name, url, training_data, options)
+        send_request(request)
+      end
     end
   end
 end
