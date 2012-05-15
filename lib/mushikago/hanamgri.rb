@@ -19,8 +19,6 @@ module Mushikago
     autoload :Field, 'mushikago/hanamgri/field'
     
     autoload :TrainingData, 'mushikago/hanamgri/training_data'
-    autoload :Element, 'mushikago/hanamgri/element'
-    
   end
 end
 
