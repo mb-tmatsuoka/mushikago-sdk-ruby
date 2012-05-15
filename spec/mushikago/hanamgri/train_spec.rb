@@ -4,9 +4,9 @@ require 'spec_helper'
 describe Mushikago::Hanamgri::TrainRequest do
   before :all do
     @training_data = Mushikago::Hanamgri::TrainingData.new do
-      add Mushikago::Hanamgri::Element.new("会社名", "株式会社マイニングブラウニー")
-      add Mushikago::Hanamgri::Element.new("住所", "東京都中央区日本橋浜町１−２−３")
-      add Mushikago::Hanamgri::Element.new("電話番号", "03-6206-2812")
+      put("name", "株式会社マイニングブラウニー")
+      put("address", "東京都中央区日本橋浜町１−２−３")
+      put("tel", "03-6206-2812")
     end
   end
 

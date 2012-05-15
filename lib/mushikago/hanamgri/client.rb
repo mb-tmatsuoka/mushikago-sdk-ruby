@@ -165,14 +165,13 @@ module Mushikago
       #
       # @example
       #   training_data = Mushikago::Hanamgri::TrainingData.new do
-      #     add Mushikago::Hanamgri::Element.new('name', 'mushikago')
-      #     add {:key => 'name', :value => 'mushikago'} # <= Hashでも追加できます
+      #     put('name', 'mushikago')
       #   end
       #   client.train('ec', 'http://www.mushikago.org/', training_data)
       #
       # @param [String] domain_name ドメイン名
       # @param [String] url 学習対象のURL
-      # @param [String] training_data 学習データ
+      # @param [Mushikago::Hanamgri::TrainingData] training_data 学習データ
       # @return [Mushikagp::Http::Response] リクエストの結果
       def train domain_name, url, training_data, options={}
         request = Hanamgri::TrainRequest.new(domain_name, url, training_data, options)
