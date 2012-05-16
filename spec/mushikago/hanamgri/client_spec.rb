@@ -16,6 +16,7 @@ describe Mushikago::Hanamgri::Client do
   it{ should be_respond_to(:train) }
   it{ should be_respond_to(:save_dictionary) }
   it{ should be_respond_to(:list_dictionaries) }
+  it{ should be_respond_to(:delete_dictionary) }
 
   [
     [:create_domain, Mushikago::Hanamgri::CreateDomainRequest, ['domain_name', 'seeds', Mushikago::Hanamgri::Schema.new, {}]],
@@ -31,6 +32,7 @@ describe Mushikago::Hanamgri::Client do
     [:train, Mushikago::Hanamgri::TrainRequest, ['domain_name', 'http://www.mushikago.org/', Mushikago::Hanamgri::TrainingData.new, {}]],
     [:save_dictionary, Mushikago::Hanamgri::SaveDictionaryRequest, ['domain_name', {:description => '辞書の説明'}]],
     [:list_dictionaries, Mushikago::Hanamgri::ListDictionariesRequest, [{:limit => 3, :offset => 2}]],
+    [:delete_dictionary, Mushikago::Hanamgri::DeleteDictionaryRequest, ['dictionary_name', {}]],
   ].each do |method_name, clazz, args|
     context method_name do
       it "が呼ばれたとき、#{clazz}のインスタンスが生成され、send_requestに渡される" do

@@ -1,5 +1,5 @@
 # -*- coding : utf-8 -*-
-require 'spec_helper'
+require 'spec-helper'
 
 describe Mushikago::Hanamgri::DeleteDomainRequest do
   context '.new("domain_name")' do

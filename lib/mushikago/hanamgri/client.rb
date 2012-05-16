@@ -206,6 +206,18 @@ module Mushikago
         request = Hanamgri::ListDictionariesRequest.new(options)
         send_request(request)
       end
+      
+      # 辞書の情報を削除する
+      #
+      # @example
+      #    client.delete_dictionary('mushikago/ec')
+      #
+      # @param [String] dictionary_name 辞書名
+      def delete_dictionary dictionary_name, options={}
+        request = Hanamgri::DeleteDictionaryRequest.new(dictionary_name,options)
+        send_request(request)
+      end
+
     end
   end
 end
