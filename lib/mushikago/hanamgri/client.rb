@@ -191,6 +191,20 @@ module Mushikago
         request = Hanamgri::SaveDictionaryRequest.new(domain_name, options)
         send_request(request)
       end
+
+      # 辞書の一覧を取得する
+      #
+      # @example
+      #    client.list_dictionaries(20, 10, 'ec')
+      #
+      # @param [Hash] options リクエストのオプション
+      # @option options [Integer] : limit 最大取得件数
+      # @option options [Integer] : offset 開始位置
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def list_dictionaries options={}
+        request = Hanamgri::ListDictionariesRequest.new(options)
+        send_request(request)
+      end
     end
   end
 end
