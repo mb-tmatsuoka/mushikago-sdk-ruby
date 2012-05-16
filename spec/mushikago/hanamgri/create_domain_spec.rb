@@ -19,11 +19,12 @@ describe Mushikago::Hanamgri::CreateDomainRequest do
     its(:seeds){ should == s }
     its(:schema){ should == @schema.to_json }
     its(:description){ should == o[:description] }
+    its(:dictionary_name){ should == o[:dictionary_name] }
   end
 
   test_parameters = [
     ['domain_name', 'seeds', {}],
-    ['name', 'seeds', {:description => 'description'}],
+    ['name', 'seeds', {:description => 'description', :dictionary_name => 'dictionary'}],
   ].each do |n, s, o|
     context ".new(#{n}, #{s}, #{o})" do
       it_should_behave_like 'a valid request instance', n, s, o

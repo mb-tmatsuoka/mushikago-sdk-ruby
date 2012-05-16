@@ -25,6 +25,7 @@ module Mushikago
       # @param [String] schema スキーマ
       # @param [Hash] options オプション
       # @option options [String] :description ドメインの説明
+      # @option options [String] :dictionary_name 初期辞書
       def create_domain domain_name, seeds, schema, options={}
         request = Hanamgri::CreateDomainRequest.new(domain_name, seeds, schema, options)
         send_request(request)

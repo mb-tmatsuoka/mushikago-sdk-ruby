@@ -6,6 +6,7 @@ module Mushikago
       attr_accessor :domain_name
       request_parameter :seeds
       request_parameter :schema do |s| s.to_json end
+      request_parameter :dictionary_name
       request_parameter :description
 
       def initialize domain_name, seeds, schema, options={}
@@ -15,6 +16,7 @@ module Mushikago
         self.seeds = seeds
         self.schema = schema
         self.description = options[:description] if options.has_key?(:description)
+        self.dictionary_name = options[:dictionary_name] if options.has_key?(:dictionary_name)
       end
     end
   end
