@@ -53,7 +53,8 @@ module Mushikago
       # @param [String] url 解析対象URL
       # @param [Hash] options オプション
       # @option options [String] :charset 解析対象ページ文字コード
-      # @option options [String] :tag 解析結果検索用タグ
+      # @option options [String] :tag 解析結果識別用タグ
+      # @option options [String] :auto_feedback 解析のみ。もしくは解析と学習を行う
       def request_analysis domain_name, url, options={}
         request = Hanamgri::RequestAnalysisRequest.new(domain_name, url, options)
         send_request(request)
