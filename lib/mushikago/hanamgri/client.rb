@@ -178,6 +178,19 @@ module Mushikago
         request = Hanamgri::TrainRequest.new(domain_name, url, training_data, options)
         send_request(request)
       end
+
+      # 辞書を保存する
+      #
+      # @example
+      #   client.save_dictionary('ec', {:description => '辞書の説明'})
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [Hash] options オプション
+      # @option options [String] :description 辞書の説明
+      def save_dictionary domain_name, options={}
+        request = Hanamgri::SaveDictionaryRequest.new(domain_name, options)
+        send_request(request)
+      end
     end
   end
 end

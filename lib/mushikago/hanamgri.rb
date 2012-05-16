@@ -14,6 +14,7 @@ module Mushikago
     autoload :GetListAnalysesRequest, 'mushikago/hanamgri/list_analyses_request'
     autoload :SearchSchemaRequest, 'mushikago/hanamgri/search_schema_request'
     autoload :TrainRequest, 'mushikago/hanamgri/train_request'
+    autoload :SaveDictionaryRequest, 'mushikago/hanamgri/save_dictionary_request'
     
     autoload :Schema, 'mushikago/hanamgri/schema'
     autoload :Field, 'mushikago/hanamgri/field'
