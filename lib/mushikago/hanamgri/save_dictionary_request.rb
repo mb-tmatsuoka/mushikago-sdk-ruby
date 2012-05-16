@@ -3,7 +3,7 @@ module Mushikago
   module Hanamgri
     class SaveDictionaryRequest < Mushikago::Http::PutRequest
       def path; "/1/hanamgri/dictionary" end
-      attr_accessor :domain_name
+      request_parameter :domain_name
       request_parameter :description
 
       def initialize domain_name, options={}
