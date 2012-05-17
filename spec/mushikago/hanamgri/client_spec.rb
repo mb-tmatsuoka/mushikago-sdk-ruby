@@ -18,6 +18,7 @@ describe Mushikago::Hanamgri::Client do
   it{ should be_respond_to(:list_dictionaries) }
   it{ should be_respond_to(:delete_dictionary) }
   it{ should be_respond_to(:list_knowledges) }
+  it{ should be_respond_to(:delete_knowledge) }
 
   [
     [:create_domain, Mushikago::Hanamgri::CreateDomainRequest, ['domain_name', 'seeds', Mushikago::Hanamgri::Schema.new, {}]],
@@ -35,6 +36,7 @@ describe Mushikago::Hanamgri::Client do
     [:list_dictionaries, Mushikago::Hanamgri::ListDictionariesRequest, [{:limit => 3, :offset => 2}]],
     [:delete_dictionary, Mushikago::Hanamgri::DeleteDictionaryRequest, ['dictionary_name', {}]],
     [:list_knowledges, Mushikago::Hanamgri::ListKnowledgesRequest, [{:limit => 3, :offset => 2, :status => 'complete'}]],
+    [:delete_knowledge, Mushikago::Hanamgri::DeleteKnowledgeRequest, ['knowledge_name', {}]],
   ].each do |method_name, clazz, args|
     context method_name do
       it "が呼ばれたとき、#{clazz}のインスタンスが生成され、send_requestに渡される" do

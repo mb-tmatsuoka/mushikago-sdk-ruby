@@ -232,6 +232,17 @@ module Mushikago
         request = Hanamgri::ListKnowledgesRequest.new(options)
         send_request(request)
       end
+      
+      # 学習データの情報を削除する
+      #
+      # @example
+      #    client.delete_knowledge('myec/price-yyyymmddhhmmss')
+      #
+      # @param [String] knowledge_name 学習データ名
+      def delete_knowledge knowledge_name, options={}
+        request = Hanamgri::DeleteKnowledgeRequest.new(knowledge_name,options)
+        send_request(request)
+      end
 
     end
   end
