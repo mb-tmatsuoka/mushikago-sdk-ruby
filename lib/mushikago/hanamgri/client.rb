@@ -53,7 +53,8 @@ module Mushikago
       # @param [String] url 解析対象URL
       # @param [Hash] options オプション
       # @option options [String] :charset 解析対象ページ文字コード
-      # @option options [String] :tag 解析結果検索用タグ
+      # @option options [String] :tag 解析結果識別用タグ
+      # @option options [String] :auto_feedback 解析のみ。もしくは解析と学習を行う
       def request_analysis domain_name, url, options={}
         request = Hanamgri::RequestAnalysisRequest.new(domain_name, url, options)
         send_request(request)
@@ -205,6 +206,18 @@ module Mushikago
         request = Hanamgri::ListDictionariesRequest.new(options)
         send_request(request)
       end
+      
+      # 辞書の情報を削除する
+      #
+      # @example
+      #    client.delete_dictionary('mushikago/ec')
+      #
+      # @param [String] dictionary_name 辞書名
+      def delete_dictionary dictionary_name, options={}
+        request = Hanamgri::DeleteDictionaryRequest.new(dictionary_name,options)
+        send_request(request)
+      end
+
     end
   end
 end
