@@ -196,7 +196,7 @@ module Mushikago
       # 辞書の一覧を取得する
       #
       # @example
-      #    client.list_dictionaries(20, 10, 'ec')
+      #    client.list_dictionaries(20, 10)
       #
       # @param [Hash] options リクエストのオプション
       # @option options [Integer] : limit 最大取得件数
@@ -210,11 +210,26 @@ module Mushikago
       # 辞書の情報を削除する
       #
       # @example
-      #    client.delete_dictionary('mushikago/ec')
+      #    client.delete_dictionary('myec-yyyymmddhhmmss')
       #
       # @param [String] dictionary_name 辞書名
       def delete_dictionary dictionary_name, options={}
         request = Hanamgri::DeleteDictionaryRequest.new(dictionary_name,options)
+        send_request(request)
+      end
+
+      # 学習データの一覧を取得する
+      #
+      # @example
+      #    client.list_knowledges(20, 10, 'complete')
+      #
+      # @param [Hash] options リクエストのオプション
+      # @option options [Integer] : limit 最大取得件数
+      # @option options [Integer] : offset 開始位置
+      # @option options [String] : status 学習データ保存の進捗状況
+      # @return [Mushikago::Http::Response] リクエストの結果
+      def list_knowledges options={}
+        request = Hanamgri::ListKnowledgesRequest.new(options)
         send_request(request)
       end
 
