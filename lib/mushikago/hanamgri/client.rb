@@ -236,7 +236,7 @@ module Mushikago
       # 学習データの情報を削除する
       #
       # @example
-      #    client.delete_knowledge('myec/price-yyyymmddhhmmss')
+      #    client.delete_knowledge('ec/price-UUID')
       #
       # @param [String] knowledge_name 学習データ名
       def delete_knowledge knowledge_name, options={}
