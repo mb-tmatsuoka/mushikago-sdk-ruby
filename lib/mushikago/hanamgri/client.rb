@@ -210,7 +210,7 @@ module Mushikago
       # 辞書の情報を削除する
       #
       # @example
-      #    client.delete_dictionary('myec-yyyymmddhhmmss')
+      #    client.delete_dictionary('ec-UUID')
       #
       # @param [String] dictionary_name 辞書名
       def delete_dictionary dictionary_name, options={}
