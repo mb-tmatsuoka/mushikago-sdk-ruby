@@ -17,6 +17,7 @@ module Mushikago
     autoload :SaveDictionaryRequest, 'mushikago/hanamgri/save_dictionary_request'
     autoload :ListDictionariesRequest, 'mushikago/hanamgri/list_dictionaries_request'
     autoload :DeleteDictionaryRequest, 'mushikago/hanamgri/delete_dictionary_request'
+    autoload :SaveKnowledgeRequest, 'mushikago/hanamgri/save_knowledge_request'
     autoload :ListKnowledgesRequest, 'mushikago/hanamgri/list_knowledges_request'
     autoload :DeleteKnowledgeRequest, 'mushikago/hanamgri/delete_knowledge_request'
     
