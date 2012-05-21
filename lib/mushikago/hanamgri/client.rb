@@ -218,6 +218,19 @@ module Mushikago
         send_request(request)
       end
 
+      # 学習データを保存する
+      #
+      # @example
+      #   client.save_knowledge('ec', {:description => '学習データの説明'})
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [Hash] options オプション
+      # @option options [String] :description 学習データの説明
+      def save_knowledge domain_name, options={}
+        request = Hanamgri::SaveKnowledgeRequest.new(domain_name, options)
+        send_request(request)
+      end
+
       # 学習データの一覧を取得する
       #
       # @example
