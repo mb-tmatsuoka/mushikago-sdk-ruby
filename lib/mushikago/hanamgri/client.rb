@@ -169,14 +169,16 @@ module Mushikago
       #   training_data = Mushikago::Hanamgri::TrainingData.new do
       #     put('name', 'mushikago')
       #   end
-      #   client.train('ec', 'http://www.mushikago.org/', training_data)
+      #   client.train('ec', 'http://www.mushikago.org/', training_data)   # URLを指定する例
+      #   client.train('ec', '<div>hello mushikago</div>', training_data)  # HTML文字列を指定する例
+      #   client.train('ec', File.read('./mushikago.html'), training_data) # HTMLをファイルから読み込んで指定する例
       #
       # @param [String] domain_name ドメイン名
-      # @param [String] url 学習対象のURL
+      # @param [String] url_or_html 学習対象のURLもしくはHTML文字列
       # @param [Mushikago::Hanamgri::TrainingData] training_data 学習データ
       # @return [Mushikagp::Http::Response] リクエストの結果
-      def train domain_name, url, training_data, options={}
-        request = Hanamgri::TrainRequest.new(domain_name, url, training_data, options)
+      def train domain_name, url_or_html, training_data, options={}
+        request = Hanamgri::TrainRequest.new(domain_name, url_or_html, training_data, options)
         send_request(request)
       end
 
