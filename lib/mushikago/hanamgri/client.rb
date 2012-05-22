@@ -16,7 +16,7 @@ module Mushikago
       #   schema = Mushikago::Hanamgri::Schema.new do
       #     add Mushikago::Hanamgri::Field.new('name', true, :string)
       #     add Mushikago::Hanamgri::Field.new('price', true, :number)
-      #     add {:name => 'shipping', :required => true, :type => :number} # <= Hashでも追加できます
+      #     add {:name => 'shipping', :required => true, :type => :number, :knowledge_name => 'mushikago/ec/shipping'} # <= Hashでも追加できます
       #   end
       #   client.create_domain('ec', '税込', schema)
       #

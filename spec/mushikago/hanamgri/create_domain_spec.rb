@@ -5,7 +5,7 @@ describe Mushikago::Hanamgri::CreateDomainRequest do
   before :all do
     @schema = Mushikago::Hanamgri::Schema.new do
       add Mushikago::Hanamgri::Field.new('name', true, :string)
-      add Mushikago::Hanamgri::Field.new('price', true, :number)
+      add Mushikago::Hanamgri::Field.new('price', true, :number, 'mushikago/ec/price')
       add Mushikago::Hanamgri::Field.new('shipping', false, :string)
       add Mushikago::Hanamgri::Field.new('description', false, :string)
     end
