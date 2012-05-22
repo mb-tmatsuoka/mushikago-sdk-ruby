@@ -5,8 +5,10 @@ describe Mushikago::Hanamgri::Schema do
   valid_examples = [
     Mushikago::Hanamgri::Field.new('name', true, :string),
     Mushikago::Hanamgri::Field.new('price', true, :number),
+    Mushikago::Hanamgri::Field.new('price', true, :number, 'mushikago/ec/price'),
     {:name => 'name', :required => true, :type => :string},
     {:name => 'price', :required => true, :type => :number},
+    {:name => 'price', :required => true, :type => :number, :knowledge_name => 'mushikago/ec/price'},
   ]
 
   valid_examples.each do |field|

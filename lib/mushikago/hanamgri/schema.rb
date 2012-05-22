@@ -13,7 +13,7 @@ module Mushikago
       def add field_or_hash
         field = field_or_hash
         if field.kind_of?(Hash)
-          field = Mushikago::Hanamgri::Field.new(field[:name], field[:required], field[:type])
+          field = Mushikago::Hanamgri::Field.new(field[:name], field[:required], field[:type], field[:knowledge_name])
         end
         field.validate!
         @fields << field

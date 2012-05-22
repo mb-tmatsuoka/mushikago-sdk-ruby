@@ -16,7 +16,7 @@ module Mushikago
       #   schema = Mushikago::Hanamgri::Schema.new do
       #     add Mushikago::Hanamgri::Field.new('name', true, :string)
       #     add Mushikago::Hanamgri::Field.new('price', true, :number)
-      #     add {:name => 'shipping', :required => true, :type => :number} # <= Hashでも追加できます
+      #     add {:name => 'shipping', :required => true, :type => :number, :knowledge_name => 'mushikago/ec/shipping'} # <= Hashでも追加できます
       #   end
       #   client.create_domain('ec', '税込', schema)
       #
@@ -217,6 +217,19 @@ module Mushikago
       # @param [String] dictionary_name 辞書名
       def delete_dictionary dictionary_name, options={}
         request = Hanamgri::DeleteDictionaryRequest.new(dictionary_name,options)
+        send_request(request)
+      end
+
+      # 学習データを保存する
+      #
+      # @example
+      #   client.save_knowledge('ec', {:description => '学習データの説明'})
+      #
+      # @param [String] domain_name ドメイン名
+      # @param [Hash] options オプション
+      # @option options [String] :description 学習データの説明
+      def save_knowledge domain_name, options={}
+        request = Hanamgri::SaveKnowledgeRequest.new(domain_name, options)
         send_request(request)
       end
 

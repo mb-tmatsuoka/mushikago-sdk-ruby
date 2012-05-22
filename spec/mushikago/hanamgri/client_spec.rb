@@ -17,6 +17,7 @@ describe Mushikago::Hanamgri::Client do
   it{ should be_respond_to(:save_dictionary) }
   it{ should be_respond_to(:list_dictionaries) }
   it{ should be_respond_to(:delete_dictionary) }
+  it{ should be_respond_to(:save_knowledge) }
   it{ should be_respond_to(:list_knowledges) }
   it{ should be_respond_to(:delete_knowledge) }
 
@@ -35,6 +36,7 @@ describe Mushikago::Hanamgri::Client do
     [:save_dictionary, Mushikago::Hanamgri::SaveDictionaryRequest, ['domain_name', {:description => '辞書の説明'}]],
     [:list_dictionaries, Mushikago::Hanamgri::ListDictionariesRequest, [{:limit => 3, :offset => 2}]],
     [:delete_dictionary, Mushikago::Hanamgri::DeleteDictionaryRequest, ['dictionary_name', {}]],
+    [:save_knowledge, Mushikago::Hanamgri::SaveKnowledgeRequest, ['domain_name', {:description => '学習データの説明'}]],
     [:list_knowledges, Mushikago::Hanamgri::ListKnowledgesRequest, [{:limit => 3, :offset => 2, :status => 'complete'}]],
     [:delete_knowledge, Mushikago::Hanamgri::DeleteKnowledgeRequest, ['knowledge_name', {}]],
   ].each do |method_name, clazz, args|
