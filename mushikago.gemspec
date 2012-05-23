@@ -18,10 +18,11 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'maruku'
   s.add_development_dependency 'yard'
   s.add_development_dependency 'rspec', '~> 2.6.0'
+  s.add_development_dependency 'ci_reporter'
   s.add_development_dependency 'ZenTest'
   s.add_development_dependency 'bundler'
 
-  s.files         = `find autotest/ lib/ doc/ -regex '.*svn.*' -o -print`.split("\n")
+  s.files         = `find autotest/ lib/ spec/`.split("\n")
   s.files        += %w(LICENSE README.md Rakefile Gemfile)
   s.test_files    = `find spec -name '*.rb'`.split("\n")
   s.require_paths = ["lib"]
