@@ -8,6 +8,7 @@ module Mushikago
 
       def initialize domain_name, options={}
         super(options)
+        raise 'Unsupported Operation.'
         self.domain_name = domain_name
         self.description = options[:description] if options.has_key?(:description)
       end
