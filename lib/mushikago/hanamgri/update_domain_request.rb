@@ -4,7 +4,7 @@ module Mushikago
     class UpdateDomainRequest < Mushikago::Http::PostRequest
       def path; "/1/hanamgri/domains/#{domain_name}" end
       attr_accessor :domain_name
-      attr_accessor :description
+      request_parameter :description
 
       def initialize domain_name, description, options={}
         super(options)
