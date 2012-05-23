@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
 
   s.files         = `find autotest/ lib/ spec/`.split("\n")
   s.files        += %w(LICENSE README.md Rakefile Gemfile)
+  s.files.reject!{|fn| fn.include?('spec/report') }
   s.test_files    = `find spec -name '*.rb'`.split("\n")
   s.require_paths = ["lib"]
 end
