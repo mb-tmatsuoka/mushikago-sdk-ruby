@@ -5,7 +5,7 @@ Mushikago SDK for Ruby.
 - **Author**:          Toru Matsuoka
 - **Copyright**:       2011
 - **License**:         Apache License, Version 2.0
-- **Latest Version**:  0.4.0
+- **Latest Version**:  1.3-beta
 - **Release Date**:    January 27th 2012
 
 
@@ -153,6 +153,8 @@ $ export MUSHIKAGO_SECRET_KEY=&lt;シークレットキー&gt;
 変更履歴
 --------
 
+- **May.23.12**: 1.3-beta release
+  - haanmgriのベータサポート
 - **Feb.20.12**: 0.4.2 release
   - tomboのcaptureオプション「delay_time」に対応
 - **Feb.20.12**: 0.4.0 release
