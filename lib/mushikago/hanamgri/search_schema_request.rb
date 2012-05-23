@@ -9,7 +9,6 @@ module Mushikago
       
       def initialize domain_name, query_key, query_value, options={}
         super(options)
-        raise 'Unsupported Operation.'
         self.domain_name = domain_name
         self.query_key = query_key
         self.query_value = query_value
