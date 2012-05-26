@@ -4,8 +4,8 @@ module Mushikago
     class SearchSchemaRequest < Mushikago::Http::GetRequest
       def path; "/1/hanamgri/domains/#{domain_name}/schema/search" end
       attr_accessor :domain_name
-      attr_accessor :query_key
-      attr_accessor :query_value
+      request_parameter :query_key
+      request_parameter :query_value
       
       def initialize domain_name, query_key, query_value, options={}
         super(options)
