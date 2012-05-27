@@ -176,6 +176,7 @@ module Mushikago
       # @param [String] domain_name ドメイン名
       # @param [String] url_or_html 学習対象のURLもしくはHTML文字列
       # @param [Mushikago::Hanamgri::TrainingData] training_data 学習データ
+      # @option options [String] : :charset 学習対象URLもしくはHTML文字列の文字コード
       # @return [Mushikagp::Http::Response] リクエストの結果
       def train domain_name, url_or_html, training_data, options={}
         request = Hanamgri::TrainRequest.new(domain_name, url_or_html, training_data, options)
