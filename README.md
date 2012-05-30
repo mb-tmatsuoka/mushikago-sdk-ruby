@@ -2,11 +2,11 @@ Mushikago SDK for Ruby.
 =======================
 
 - **Homepage**:        [http://www.mushikago.org/](http://www.mushikago.org/)
-- **Author**:          Toru Matsuoka
+- **Author**:          MiningBrownie
 - **Copyright**:       2011
 - **License**:         Apache License, Version 2.0
-- **Latest Version**:  0.4.0
-- **Release Date**:    January 27th 2012
+- **Latest Version**:  2.1.0
+- **Release Date**:    May 30th 2012
 
 
 概要
@@ -18,13 +18,14 @@ Mushikago SDK for Ruby.
 機能一覧
 --------
 
-**1.tomboを利用する**: [tombo](http://www.tombo.ne.jp/)は、APIを通してWebサイトのキャプチャ画像を取得するサービスです。
-キャプチャ画像にはタグをつけて管理することができます。
-キャプチャ画像は非同期で取得され、サーバの混雑具合によってリクエストから取得まで最大1時間の時間差があります。
-
-**2.mitsubachiを利用する**: [mitsubachi](http://www.mushikago.org/mitsubachi/)はウェブサイトをクローリングするためのクラウドプラットフォームサービスです。
+**1.mitsubachiを利用する**: [mitsubachi](http://www.mushikago.org/mitsubachi/)はウェブサイトをクローリングするためのクラウドプラットフォームサービスです。
 環境構築などの準備を一切必要とせず、ユーザーは簡易なスクリプトをmitsubachiサーバにアップロード するだけで、ウェブ上の欲しい情報を高速に収集し保存します。ユーザーは、少しの技術力とアイデアを持っていれば、新たなクローラビジネスを始める事ができます。
 
+**2.hotaruを利用する**: [hotaru](http://www.mushikago.org/hotaru/)とは、自然言語処理を行うSaaS型のサービスです。
+hotaruは日本語や英語など、多言語の解析に対応でき、それらの機能を初期費用が掛からず安価なコストから利用できます。また、同じmushikagoのサービスであるmitsubachiを使って、ウェブ上のレビューやブログなどの文章を取得してhotaruで解析するといった様に、 mushikago内のサービスと連携しやすいことも大きな利点です。
+
+**3.hanamgriを利用する**: [hanamgri](http://www.mushikago.org/hanamgri/)とは、さまざまなレイアウトのウェブページから特定のデータを抽出するサービスです。
+webサイトの構成やレイアウトを意識することなく「欲しい項目」「欲しい項目の周辺にありそうなキーワード」「欲しい情報がありそうなURL」をhanamgriに渡すだけで利用できます。 
 
 インストール方法
 ----------------
@@ -153,6 +154,10 @@ $ export MUSHIKAGO_SECRET_KEY=&lt;シークレットキー&gt;
 変更履歴
 --------
 
+- **May.30.12**: 2.1.0 release
+  - hanamgri(β)サポート
+- **May.23.12**: 2.0.0 release
+  - hanamgriのベータサポート
 - **Feb.20.12**: 0.4.2 release
   - tomboのcaptureオプション「delay_time」に対応
 - **Feb.20.12**: 0.4.0 release

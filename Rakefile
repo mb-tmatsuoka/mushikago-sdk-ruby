@@ -2,6 +2,7 @@ $:.unshift File.expand_path('../lib', __FILE__)
 require 'rubygems'
 require 'bundler'
 Bundler.setup :default, :test, :development
+require 'ci/reporter/rake/rspec'
 
 Bundler::GemHelper.install_tasks
 
