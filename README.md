@@ -2,11 +2,11 @@ Mushikago SDK for Ruby.
 =======================
 
 - **Homepage**:        [http://www.mushikago.org/](http://www.mushikago.org/)
-- **Author**:          Toru Matsuoka
+- **Author**:          MiningBrownie
 - **Copyright**:       2011
 - **License**:         Apache License, Version 2.0
-- **Latest Version**:  2.0.0
-- **Release Date**:    January 27th 2012
+- **Latest Version**:  2.1.0
+- **Release Date**:    May 30th 2012
 
 
 概要
@@ -154,6 +154,8 @@ $ export MUSHIKAGO_SECRET_KEY=&lt;シークレットキー&gt;
 変更履歴
 --------
 
+- **May.30.12**: 2.1.0 release
+  - hanamgri(β)サポート
 - **May.23.12**: 2.0.0 release
   - hanamgriのベータサポート
 - **Feb.20.12**: 0.4.2 release
