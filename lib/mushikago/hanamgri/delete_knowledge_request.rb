@@ -7,7 +7,6 @@ module Mushikago
       
       def initialize knowledge_name, options={}
         super(options)
-        raise 'Unsupported Operation.'
         self.knowledge_name = knowledge_name
       end
     end

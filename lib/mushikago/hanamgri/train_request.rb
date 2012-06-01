@@ -6,6 +6,7 @@ module Mushikago
       attr_accessor :domain_name
       request_parameter :url_or_html
       request_parameter :training_data do |s| s.to_json end
+      request_parameter :charset
 
       def initialize domain_name, url_or_html, training_data, options={}
         super(options)
@@ -13,6 +14,7 @@ module Mushikago
         self.domain_name = domain_name
         self.url_or_html = url_or_html
         self.training_data = training_data
+        self.charset = options[:charset] if options.has_key?(:charset)
       end
     end
   end
