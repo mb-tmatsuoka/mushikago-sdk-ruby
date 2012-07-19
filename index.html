@@ -1,0 +1,277 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Mushikago-sdk-ruby by miningbrownie</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Mushikago-sdk-ruby</h1>
+        <p>mushikago SDK for Ruby</p>
+
+        <p class="view"><a href="https://github.com/miningbrownie/mushikago-sdk-ruby">View the Project on GitHub <small>miningbrownie/mushikago-sdk-ruby</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/miningbrownie/mushikago-sdk-ruby/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/miningbrownie/mushikago-sdk-ruby/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/miningbrownie/mushikago-sdk-ruby">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>Mushikago SDK for Ruby.</h1>
+
+<ul>
+<li>
+<strong>Homepage</strong>:        <a href="http://www.mushikago.org/">http://www.mushikago.org/</a>
+</li>
+<li>
+<strong>Author</strong>:          MiningBrownie</li>
+<li>
+<strong>Copyright</strong>:       2011</li>
+<li>
+<strong>License</strong>:         Apache License, Version 2.0</li>
+<li>
+<strong>Latest Version</strong>:  2.1.0</li>
+<li>
+<strong>Release Date</strong>:    May 30th 2012</li>
+</ul><h2>概要</h2>
+
+<p><a href="http://www.miningbrownie.co.jp/">株式会社マイニングブラウニー</a>が提供する<a href="http://www.mushikago.org/">mushikago web service</a>を、Rubyから扱うためのライブラリです。</p>
+
+<h2>機能一覧</h2>
+
+<p><strong>1.mitsubachiを利用する</strong>: <a href="http://www.mushikago.org/mitsubachi/">mitsubachi</a>はウェブサイトをクローリングするためのクラウドプラットフォームサービスです。
+環境構築などの準備を一切必要とせず、ユーザーは簡易なスクリプトをmitsubachiサーバにアップロード するだけで、ウェブ上の欲しい情報を高速に収集し保存します。ユーザーは、少しの技術力とアイデアを持っていれば、新たなクローラビジネスを始める事ができます。</p>
+
+<p><strong>2.hotaruを利用する</strong>: <a href="http://www.mushikago.org/hotaru/">hotaru</a>とは、自然言語処理を行うSaaS型のサービスです。
+hotaruは日本語や英語など、多言語の解析に対応でき、それらの機能を初期費用が掛からず安価なコストから利用できます。また、同じmushikagoのサービスであるmitsubachiを使って、ウェブ上のレビューやブログなどの文章を取得してhotaruで解析するといった様に、 mushikago内のサービスと連携しやすいことも大きな利点です。</p>
+
+<p><strong>3.hanamgriを利用する</strong>: <a href="http://www.mushikago.org/hanamgri/">hanamgri</a>とは、さまざまなレイアウトのウェブページから特定のデータを抽出するサービスです。
+webサイトの構成やレイアウトを意識することなく「欲しい項目」「欲しい項目の周辺にありそうなキーワード」「欲しい情報がありそうなURL」をhanamgriに渡すだけで利用できます。 </p>
+
+<h2>インストール方法</h2>
+
+<p>Mushikago SDK for Rubyはgemを使ってインストールします。</p>
+
+<pre><code>$ gem install mushikago-sdk
+</code></pre>
+
+<p>(root権限が必要な場合は<code>sudo</code>を使ってください。)</p>
+
+<h2>使い方</h2>
+
+<h3>mitsubachiを利用する</h3>
+
+<p>以下のコードで<a href="http://www.mushikago.org/mitsubachi/">mitsubachi</a>を利用することができます。
+スクリプトファイルの記述方法は<a href="http://www.mushikago.org/mitsubachi/dev/doc/deploy/">ドキュメント</a>を参照して下さい。</p>
+
+<pre><code>require 'mushikago'
+
+client = Mushikago::Mitsubachi::Client.new(:api_key =&gt; '&lt;APIキー&gt;', :secret_key =&gt; '&lt;シークレットキー&gt;')
+
+project_name = 'sample_project'
+
+# プロジェクト作成
+client.project_create(project_name)
+
+# スクリプトファイルデプロイ
+client.script_deploy(project_name, 'sample.rb')
+
+# クロール開始
+client.http_fetch(project_name, 'http://www.mushikago.org/', 'sample.rb')
+
+# クロール終了まで待機
+sleep 1 until client.project_queues(project_name)['count'] == 0
+
+# クロールログ確認
+log_files = client.resource_list(project_name, :filter =&gt; 'log/stdout')
+
+# ログファイルURL取得
+log_files['files'].each do |file|
+  ret = client.resource_get(project_name, file['name'])
+  puts ret['url']
+end
+</code></pre>
+
+<h3>hotaruを利用する</h3>
+
+<p>以下のコードで<a href="http://www.mushikago.org/hotaru/">hotaru</a>を利用することができます。</p>
+
+<pre><code>require 'mushikago'
+
+client = Mushikago::Hotaru::Client.new(:api_key =&gt; '&lt;APIキー&gt;', :secret_key =&gt; '&lt;シークレットキー&gt;')
+
+domain_name = 'sample_domain'
+
+# ドメイン作成
+client.domain_create(domain_name, 'english', :tags =&gt; ['negative', 'positive'])
+
+# テキスト登録
+client.text_put(domain_name, 'This is too bad.', ['negative'])
+client.text_put(domain_name, 'This is very good.', ['positive'])
+
+# 登録されたテキストの学習が完了するまでsleep
+sleep 1 until client.text_list(domain_name)['texts'].all?{|text| text['status'] == 'complete'}
+
+# クラス判定
+result = client.classifier_judge(domain_name, 'good bye!')
+puts result['tag']
+# =&gt; positive
+
+# 共起グラフ作成
+result = client.collocation_create(domain_name, ['negative', 'positive'])
+collocation_id = result['collocation_id']
+
+# 共起グラフの作成が完了するまでsleep
+sleep 1 until client.collocation_list(domain_name)['collocations'].all?{|col| col['status'] == 'error' || col['status'] == 'complete'}
+
+# 共起語取得
+result = client.collocation_get(domain_name, collocation_id, 'This')
+puts result['words']
+# =&gt; [{"word"=&gt;"bad", "score"=&gt;4.4986811569504646},
+#     {"word"=&gt;"good", "score"=&gt;4.4986811569504646},
+#     {"word"=&gt;"too", "score"=&gt;4.4986811569504646},
+#     {"word"=&gt;"very", "score"=&gt;4.4986811569504646},
+#     {"word"=&gt;"is", "score"=&gt;3.3137419313374643}]
+</code></pre>
+
+<h4>APIキーとシークレットキーの設定方法</h4>
+
+<p>APIキーとシークレットキーは以下の方法でも設定することができます。</p>
+
+<p><strong>YAMLファイルを利用する場合</strong></p>
+
+<p>以下のYAMLファイルを用意します。</p>
+
+<pre>
+api_key:&lt;APIキー&gt;
+secret_key:&lt;シークレットキー&gt;
+</pre>
+
+<p>以下のコードでYAMLファイルを読み込んで使用してください。</p>
+
+<pre><code>require 'rubygems'
+require 'mushikago'
+
+Mushikago.config.load(YAML.load(File.read('config.yml')))
+
+client = Mushikago::Tombo::Client.new
+</code></pre>
+
+<p><strong>環境変数を利用する場合</strong></p>
+
+<p>環境変数MUSHIKAGO_API_KEYとMUSHIKAGO_SECRET_KEYにそれぞれAPIキーとシークレットキーの設定を行います。</p>
+
+<pre>
+$ export MUSHIKAGO_API_KEY=&lt;APIキー&gt;
+$ export MUSHIKAGO_SECRET_KEY=&lt;シークレットキー&gt;
+</pre>
+
+<pre><code>require 'rubygems'
+require 'mushikago'
+
+client = Mushikago::Tombo::Client.new
+</code></pre>
+
+<h2>変更履歴</h2>
+
+<ul>
+<li>
+<strong>May.30.12</strong>: 2.1.0 release
+
+<ul>
+<li>hanamgri(β)サポート</li>
+</ul>
+</li>
+<li>
+<strong>May.23.12</strong>: 2.0.0 release
+
+<ul>
+<li>hanamgriのベータサポート</li>
+</ul>
+</li>
+<li>
+<strong>Feb.20.12</strong>: 0.4.2 release
+
+<ul>
+<li>tomboのcaptureオプション「delay_time」に対応</li>
+</ul>
+</li>
+<li>
+<strong>Feb.20.12</strong>: 0.4.0 release
+
+<ul>
+<li>新サービス「hotaru」対応</li>
+</ul>
+</li>
+<li>
+<strong>Feb.14.12</strong>: 0.3.7 release
+
+<ul>
+<li>Multipartでアップロードするファイルの最後に改行が付与される件修正</li>
+</ul>
+</li>
+<li>
+<strong>Jan.27.12</strong>: 0.3.6 release
+
+<ul>
+<li>resource_get,script_getに:with_bodyオプション追加</li>
+</ul>
+</li>
+<li>
+<strong>Jan.27.12</strong>: 0.3.4 release
+
+<ul>
+<li>数字を含むリクエストの不具合に対応</li>
+</ul>
+</li>
+<li>
+<strong>Jan.26.12</strong>: 0.3.2 release
+
+<ul>
+<li>mitsubachiに対応</li>
+</ul>
+</li>
+<li>
+<strong>Sep.13.11</strong>: 0.2.3 release
+
+<ul>
+<li>captureメソッドのuseragentに対応</li>
+</ul>
+</li>
+<li>
+<strong>Sep.8.11</strong>: 0.2.1 release
+
+<ul>
+<li>ライセンスをApache License, Version 2.0に変更</li>
+</ul>
+</li>
+<li>
+<strong>Sep.6.11</strong>: 0.1.8 release
+
+<ul>
+<li>Mushikago SDK for Ruby新規作成</li>
+<li>Tombo サポート</li>
+</ul>
+</li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/miningbrownie">miningbrownie</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
